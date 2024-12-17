@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import '../../app/globals.css'
 import InputField from '../../components/InputField'
 
-const Register = () => {
+const Signup = () => {
   const {
     register,
     handleSubmit,
@@ -88,4 +88,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default Signup
