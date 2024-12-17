@@ -1,8 +1,11 @@
+'use client' // Ensures this component runs only on the client side
+
 import { useForm } from 'react-hook-form'
 import '../../app/globals.css'
 import InputField from '@/components/InputField'
+import Link from 'next/link'
 
-const signin = () => {
+const Signin = () => {
   const {
     register,
     handleSubmit,
@@ -37,7 +40,7 @@ const signin = () => {
           register={register}
           validation={{
             required: 'Password is required',
-            min: {
+            minLength: {
               value: 8,
               message: 'Password must be at least 8 characters',
             },
@@ -49,6 +52,15 @@ const signin = () => {
           }}
           error={errors.password}
         />
+        <div className="w-[80%] mx-auto -mt-8 text-right">
+          <Link
+            href="/auth/forgotpassword"
+            prefetch={false} // Prefetching disabled to avoid conflicts
+            className="text-red-500 cursor-pointer text-md"
+          >
+            Forgot Password
+          </Link>
+        </div>
         <button
           className="p-3 rounded-lg mx-auto bg-slate-500 text-black text-2xl w-[80%]"
           type="submit"
@@ -60,4 +72,4 @@ const signin = () => {
   )
 }
 
-export default signin
+export default Signin

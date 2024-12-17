@@ -3,6 +3,7 @@
 import { useForm } from 'react-hook-form'
 import '../../app/globals.css'
 import InputField from '../../components/InputField'
+import Link from 'next/link'
 
 const Signup = () => {
   const {
