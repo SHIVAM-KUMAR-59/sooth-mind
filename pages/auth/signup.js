@@ -1,5 +1,4 @@
-
-
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import '../../app/globals.css'
 import InputField from '../../components/InputField'
@@ -7,6 +6,7 @@ import Link from 'next/link'
 import axios from 'axios'
 
 const Signup = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const {
     register,
     handleSubmit,
@@ -15,30 +15,39 @@ const Signup = () => {
   } = useForm()
 
   const onSubmit = async (data) => {
-    try{
-      const response = await axios.post('/api/register', data)
+    setIsLoading(true)
+    try {
+      const response = await axios.post('/api/signup', data)
 
-      if(response.status === 200){
-        alert('User registere Successfully')
+      if (response.status === 200) {
+        alert('User registered Successfully')
       }
     } catch (error) {
       if (error.response && error.response.data) {
-        alert(error.response.data.message || 'An error occurred');
+        alert(error.response.data.message || 'An error occurred')
       } else {
-        alert('An error occurred');
+        console.log(error)
+        alert('An error occurred')
       }
-    }finally{
+    } finally {
+      setIsLoading(false)
       reset()
     }
   }
 
   return (
     <>
-      <h1 className="text-3xl text-center mt-20"> Register</h1>
+      <h1 className="text-3xl text-center mt-20">Register</h1>
       <form
-        className="flex flex-col gap-10 max-w-[600px] mx-auto p-4 border-2 mt-20 rounded-lg text-black"
+        className="flex flex-col gap-10 max-w-[600px] mx-auto p-4 border-2 mt-20 rounded-lg text-black relative"
         onSubmit={handleSubmit(onSubmit)}
       >
+        {isLoading && (
+          <div className="absolute inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center rounded-lg">
+            <div className="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full border-t-transparent border-white"></div>
+          </div>
+        )}
+
         <InputField
           label="name"
           type="text"
@@ -93,12 +102,18 @@ const Signup = () => {
         />
 
         <button
-          className="p-3 rounded-lg mx-auto bg-slate-500 text-black text-2xl w-[80%]"
+          className={`p-3 rounded-lg mx-auto text-2xl w-[80%] ${
+            isLoading ? 'bg-gray-400' : 'bg-slate-500'
+          }`}
           type="submit"
+          disabled={isLoading}
         >
-          Submit
+          {isLoading ? 'Submitting...' : 'Submit'}
         </button>
-        <Link href="/auth/signin" className="text-white cursor-pointer text-md">Already Have a account?</Link>
+
+        <Link href="/auth/signin" className="text-white cursor-pointer text-md">
+          Already Have an account?
+        </Link>
       </form>
     </>
   )
