@@ -4,6 +4,7 @@ import '../../app/globals.css'
 import InputField from '../../components/InputField'
 import Link from 'next/link'
 import axios from 'axios'
+import { signIn } from 'next-auth/react'
 
 const Signup = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -20,13 +21,12 @@ const Signup = () => {
       const response = await axios.post('/api/signup', data)
 
       if (response.status === 200) {
-        alert('User registered Successfully')
+        alert('User registered successfully')
       }
     } catch (error) {
       if (error.response && error.response.data) {
         alert(error.response.data.message || 'An error occurred')
       } else {
-        console.log(error)
         alert('An error occurred')
       }
     } finally {
@@ -109,6 +109,15 @@ const Signup = () => {
           disabled={isLoading}
         >
           {isLoading ? 'Submitting...' : 'Submit'}
+        </button>
+
+        {/* Google Signup Option */}
+        <button
+          type="button"
+          className="p-3 bg-blue-500 rounded-lg mx-auto text-2xl w-[80%] text-white"
+          onClick={() => signIn('google')}
+        >
+          Sign up with Google
         </button>
 
         <Link href="/auth/signin" className="text-white cursor-pointer text-md">

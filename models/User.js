@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const User = mongoose.Schema({
+const UserSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -17,8 +17,17 @@ const User = mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
-    min: 8,
+    minlength: 8,
+    validate: {
+      validator: function (value) {
+        // Only validate password if the user is not an OAuth user
+        if (!this.isOAuth && (!value || value.length < 8)) {
+          return false
+        }
+        return true
+      },
+      message: 'Password is required and must be at least 8 characters long.',
+    },
   },
   profileImage: {
     type: String,
@@ -35,6 +44,9 @@ const User = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  isOAuth: { type: Boolean, default: false },
 })
 
-export default mongoose.model('User', User)
+const User = mongoose.models.User || mongoose.model('User', UserSchema)
+
+export default User
