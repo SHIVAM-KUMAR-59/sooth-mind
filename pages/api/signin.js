@@ -27,8 +27,29 @@ const Signin = async (req, res) => {
       return res.status(401).json({ message: 'Invalid password' })
     }
 
+    const jwtToken = jwt.sign(
+      {
+        id: user._id,
+        username,
+        email,
+      },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: '1d',
+      },
+    )
+
+    cookies().set('token', jwtToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 60 * 60 * 24,
+      path: '/',
+    })
+
     return res.status(200).json({
       message: 'User Logged In successfully',
+      token: jwtToken,
       user: {
         id: user._id,
         name: user.name,

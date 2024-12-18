@@ -1,6 +1,8 @@
 import configDB from '@/app/lib/configDB'
 import User from '@/models/User'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import { cookies } from 'next/headers'
 
 const Signup = async (req, res) => {
   if (req.method !== 'POST') {
@@ -42,10 +44,31 @@ const Signup = async (req, res) => {
       bio,
     })
 
+    const jwtToken = jwt.sign(
+      {
+        id: user._id,
+        username,
+        email,
+      },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: '1d',
+      },
+    )
+
+    cookies().set('token', jwtToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 60 * 60 * 24,
+      path: '/',
+    })
+
     await user.save()
 
     return res.status(201).json({
       message: 'User created successfully',
+      token: jwtToken,
       user: {
         id: user._id,
         name: user.name,
