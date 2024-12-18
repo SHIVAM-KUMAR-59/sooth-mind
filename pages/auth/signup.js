@@ -1,9 +1,10 @@
-// pages/auth/register.js
+
 
 import { useForm } from 'react-hook-form'
 import '../../app/globals.css'
 import InputField from '../../components/InputField'
 import Link from 'next/link'
+import axios from 'axios'
 
 const Signup = () => {
   const {
@@ -13,9 +14,22 @@ const Signup = () => {
     formState: { errors },
   } = useForm()
 
-  const onSubmit = (data) => {
-    console.log(data)
-    reset()
+  const onSubmit = async (data) => {
+    try{
+      const response = await axios.post('/api/register', data)
+
+      if(response.status === 200){
+        alert('User registere Successfully')
+      }
+    } catch (error) {
+      if (error.response && error.response.data) {
+        alert(error.response.data.message || 'An error occurred');
+      } else {
+        alert('An error occurred');
+      }
+    }finally{
+      reset()
+    }
   }
 
   return (
@@ -84,6 +98,7 @@ const Signup = () => {
         >
           Submit
         </button>
+        <Link href="/auth/signin" className="text-white cursor-pointer text-md">Already Have a account?</Link>
       </form>
     </>
   )

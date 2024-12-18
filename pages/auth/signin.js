@@ -55,7 +55,7 @@ const Signin = () => {
         <div className="w-[80%] mx-auto -mt-8 text-right">
           <Link
             href="/auth/forgotpassword"
-            prefetch={false} // Prefetching disabled to avoid conflicts
+            prefetch={false}
             className="text-red-500 cursor-pointer text-md"
           >
             Forgot Password
