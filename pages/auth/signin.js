@@ -4,7 +4,7 @@ import InputField from '@/components/InputField'
 import Link from 'next/link'
 import axios from 'axios'
 import { useState } from 'react'
-import { signIn } from 'next-auth/react'
+import GoogleSignupButton from '@/components/GoogleSignupButton'
 
 const Signin = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -90,13 +90,7 @@ const Signin = () => {
         >
           Submit
         </button>
-        <button
-          type="button"
-          className="p-3 bg-blue-500 rounded-lg mx-auto text-2xl w-[80%] text-white"
-          onClick={() => signIn('google')}
-        >
-          Sign up with Google
-        </button>
+        <GoogleSignupButton />
       </form>
     </>
   )

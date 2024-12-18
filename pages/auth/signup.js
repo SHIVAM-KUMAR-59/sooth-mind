@@ -4,7 +4,7 @@ import '../../app/globals.css'
 import InputField from '../../components/InputField'
 import Link from 'next/link'
 import axios from 'axios'
-import { signIn } from 'next-auth/react'
+import GoogleSignupButton from '@/components/GoogleSignupButton'
 
 const Signup = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -112,13 +112,7 @@ const Signup = () => {
         </button>
 
         {/* Google Signup Option */}
-        <button
-          type="button"
-          className="p-3 bg-blue-500 rounded-lg mx-auto text-2xl w-[80%] text-white"
-          onClick={() => signIn('google')}
-        >
-          Sign up with Google
-        </button>
+        <GoogleSignupButton />
 
         <Link href="/auth/signin" className="text-white cursor-pointer text-md">
           Already Have an account?
