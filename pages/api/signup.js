@@ -44,7 +44,7 @@ const Signup = async (req, res) => {
 
     await user.save()
 
-    res.status(201).json({
+    return res.status(201).json({
       message: 'User created successfully',
       user: {
         id: user._id,

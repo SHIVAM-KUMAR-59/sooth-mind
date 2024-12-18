@@ -1,11 +1,12 @@
-'use client' // Ensures this component runs only on the client side
-
 import { useForm } from 'react-hook-form'
 import '../../app/globals.css'
 import InputField from '@/components/InputField'
 import Link from 'next/link'
+import axios from 'axios'
+import { useState } from 'react'
 
 const Signin = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const {
     register,
     handleSubmit,
@@ -13,9 +14,25 @@ const Signin = () => {
     formState: { errors },
   } = useForm()
 
-  const onSubmit = (data) => {
-    console.log(data)
-    reset()
+  const onSubmit = async (data) => {
+    setIsLoading(true)
+    try {
+      const response = await axios.post('/api/auth/signin', data) // Ensure this matches the API route
+
+      if (response.status === 200) {
+        alert('User Logged In successfully')
+      }
+    } catch (error) {
+      if (error.response && error.response.data) {
+        alert(error.response.data.message || 'An error occurred')
+      } else {
+        console.log(error)
+        alert('An error occurred')
+      }
+    } finally {
+      setIsLoading(false)
+      reset()
+    }
   }
 
   return (
@@ -25,13 +42,18 @@ const Signin = () => {
         className="flex flex-col gap-10 max-w-[600px] mx-auto p-4 border-2 mt-20 rounded-lg text-black"
         onSubmit={handleSubmit(onSubmit)}
       >
+        {isLoading && (
+          <div className="absolute inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center rounded-lg">
+            <div className="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full border-t-transparent border-white"></div>
+          </div>
+        )}
         <InputField
-          label="username"
+          label="email"
           type="text"
-          placeholder="username"
+          placeholder="email"
           register={register}
-          validation={{ required: 'Username is required' }}
-          error={errors.username}
+          validation={{ required: 'Email is required' }}
+          error={errors.email}
         />
         <InputField
           label="password"
