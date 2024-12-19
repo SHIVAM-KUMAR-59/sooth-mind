@@ -66,3 +66,4 @@ The Mental Well-being Platform is a web application designed to help users track
 
 ## 🤝 Contributing
 Contributions are welcome! Please fork the repository and submit a pull request for any changes or improvements.
+
