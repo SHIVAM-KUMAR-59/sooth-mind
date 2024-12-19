@@ -25,6 +25,85 @@ The Mental Well-being Platform is a web application designed to help users track
 
 ---
 
+## 🛠️ **1. Project Setup Checklist**  
+- ✅ **Project Initialization**:  
+  - Set up a Next.js project.  
+  - Configure Tailwind CSS for styling.  
+- ✅ **Dependencies Installation**:  
+  - Installed NextAuth, MongoDB, Axios, Chart.js, jsPDF, and PapaParse.  
+- ✅ **Environment Variables**:  
+  - Created `.env.local` for securely storing API keys and MongoDB credentials.  
+
+---
+
+## 🔒 **2. User Authentication**  
+- ✅ **Authentication Setup**:  
+  - Integrated NextAuth.js for user authentication.  
+  - Configured sign-in with email/password and Google OAuth.  
+  - Set up MongoDB to store user accounts and session data.  
+
+---
+
+## 📝 **3. Journal Entry System**  
+- ⬜ Design and implement a user-friendly journal entry text editor.  
+- ⬜ Create API routes to save and retrieve journal entries from MongoDB.  
+- ⬜ Display journal entries on a user dashboard with timestamps.  
+
+---
+
+## 🧠 **4. Sentiment Analysis**  
+- ⬜ Integrate the OpenAI API for sentiment analysis of journal entries.  
+- ⬜ Send journal text to the API and retrieve mood sentiment (e.g., 😊 Positive, 😐 Neutral, 😔 Negative).  
+- ⬜ Store sentiment results alongside journal entries in MongoDB.  
+
+---
+
+## 📊 **5. Mood Insights Dashboard**  
+- ⬜ Fetch journal sentiment data from MongoDB.  
+- ⬜ Use Chart.js to create a graph visualizing mood trends.  
+- ⬜ Add filters like "Past Week," "Month," or "Year" for better analysis.  
+
+---
+
+## 🎯 **6. Activity Suggestions**  
+- ⬜ Predefine activity suggestions based on sentiment categories.  
+- ⬜ Dynamically display suggestions based on recent user mood trends.  
+
+---
+
+## 📂 **7. Export Journal Data**  
+- ⬜ Provide options to export journal entries and mood data as PDF or CSV.  
+- ⬜ Use jsPDF and PapaParse libraries for generating downloadable files.  
+
+---
+
+## 🧑‍💻 **8. User Profile and Settings**  
+- ⬜ Create a profile page where users can update their details.  
+- ⬜ Add theme preferences and mood notification options.  
+
+---
+
+## 🏎️ **9. Testing and Optimization**  
+- ⬜ Test all API routes and frontend pages for functionality.  
+- ⬜ Optimize the app for speed and responsiveness.  
+
+---
+
+## 🚀 **10. Deployment**  
+- ⬜ Deploy the project using Vercel.  
+- ⬜ Configure environment variables for the production environment.  
+
+---
+
+### 🎉 Progress:  
+- **Completed**: Steps 1 and 2 ✅  
+- **Next Step**: Start working on the **Journal Entry System**.  
+
+---  
+
+Stay tuned for updates as the project progresses! ✨  
+
+
 ## 📦 Installation
 
 ### Prerequisites
