@@ -34,6 +34,7 @@ export const authOptions = {
           await dbConnect()
 
           const existingUser = await User.findOne({ email: credentials.email })
+          console.log(existingUser)
 
           if (existingUser) {
             // Verify password for existing user

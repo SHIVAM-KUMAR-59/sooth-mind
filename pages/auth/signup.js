@@ -5,6 +5,8 @@ import InputField from '../../components/InputField'
 import Link from 'next/link'
 import axios from 'axios'
 import GoogleSignupButton from '@/components/GoogleSignupButton'
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 const Signup = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -14,27 +16,26 @@ const Signup = () => {
     reset,
     formState: { errors },
   } = useForm()
+  const router = useRouter()
 
   const onSubmit = async (data) => {
-    setIsLoading(true)
-    try {
-      const response = await axios.post('/api/signup', data)
+    const result = await signIn('credentials', {
+      email: data.email,
+      password: data.password,
+      username: data.username,
+      name: data.name,
+    })
 
-      if (response.status === 200) {
-        alert('User registered successfully')
-      }
-    } catch (error) {
-      if (error.response && error.response.data) {
-        alert(error.response.data.message || 'An error occurred')
-      } else {
-        alert('An error occurred')
-      }
-    } finally {
-      setIsLoading(false)
-      reset()
+    setIsLoading(false)
+    reset()
+    if (result.ok) {
+      router.push('/')
+    }
+
+    if (result?.error) {
+      alert('Error: ' + result.error)
     }
   }
-
   return (
     <>
       <h1 className="text-3xl text-center mt-20">Register</h1>
