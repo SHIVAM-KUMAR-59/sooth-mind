@@ -20,7 +20,6 @@ const UserSchema = mongoose.Schema({
     minlength: 8,
     validate: {
       validator: function (value) {
-        // Only validate password if the user is not an OAuth user
         if (!this.isOAuth && (!value || value.length < 8)) {
           return false
         }

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import axios from 'axios'
 import { useState } from 'react'
 import GoogleSignupButton from '@/components/GoogleSignupButton'
+import { useRouter } from 'next/router'
 
 const Signin = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -14,6 +15,7 @@ const Signin = () => {
     reset,
     formState: { errors },
   } = useForm()
+  const router = useRouter()
 
   const onSubmit = async (data) => {
     setIsLoading(true)
@@ -22,10 +24,12 @@ const Signin = () => {
 
       if (response.status === 200) {
         alert('User Logged In successfully')
+        router.push('/')
       }
     } catch (error) {
       if (error.response && error.response.data) {
         alert(error.response.data.message || 'An error occurred')
+        console.log(error)
       } else {
         console.log(error)
         alert('An error occurred')

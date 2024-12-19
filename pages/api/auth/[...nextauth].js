@@ -1,9 +1,10 @@
-import User from '@/models/User'
+import User from '../../../models/User'
 import dbConnect from '../../../app/lib/configDB'
 import NextAuth from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
-import jwt from 'jsonwebtoken'
+import CredentialsProvider from 'next-auth/providers/credentials'
 import { serialize } from 'cookie'
+import bcrypt from 'bcrypt'
 
 export const authOptions = {
   providers: [
@@ -11,20 +12,87 @@ export const authOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
+    CredentialsProvider({
+      name: 'Enter Your Details',
+      credentials: {
+        name: { label: 'Name', type: 'text' },
+        email: { label: 'Email', type: 'email' },
+        username: { label: 'Username', type: 'text' },
+        password: { label: 'Password', type: 'password' },
+      },
+      async authorize(credentials) {
+        if (
+          !credentials.email ||
+          !credentials.password ||
+          !credentials.username ||
+          !credentials.name
+        ) {
+          throw new Error('All fields are required')
+        }
+
+        try {
+          await dbConnect()
+
+          const existingUser = await User.findOne({ email: credentials.email })
+
+          if (existingUser) {
+            // Verify password for existing user
+            const isPasswordValid = await bcrypt.compare(
+              credentials.password,
+              existingUser.password,
+            )
+
+            if (!isPasswordValid) {
+              throw new Error('Invalid credentials')
+            }
+
+            return {
+              id: existingUser._id,
+              name: existingUser.name,
+              email: existingUser.email,
+              username: existingUser.username,
+            }
+          } else {
+            // Create new user
+            const salt = await bcrypt.genSalt(10)
+            const hashedPassword = await bcrypt.hash(credentials.password, salt)
+
+            const newUser = await User.create({
+              name: credentials.name,
+              email: credentials.email,
+              username: credentials.username,
+              password: hashedPassword,
+            })
+
+            return {
+              id: newUser._id,
+              name: newUser.name,
+              email: newUser.email,
+              username: newUser.username,
+            }
+          }
+        } catch (error) {
+          console.error('Error in authorize callback:', error)
+          throw new Error('Authentication failed')
+        }
+      },
+    }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async signIn({ user, account }) {
+    async signIn({ user, account, profile }) {
       try {
         await dbConnect()
 
         const existingUser = await User.findOne({ email: user.email })
+
         if (!existingUser) {
+          // If the user is signing in with OAuth for the first time
           await User.create({
             name: user.name,
             username: `${user.email.split('@')[0]}_${Date.now()}`,
             email: user.email,
-            profileImage: user.image,
+            profileImage: user.image || null,
             isOAuth: !!account.provider,
           })
         }
@@ -37,34 +105,17 @@ export const authOptions = {
     },
 
     async session({ session, token }) {
-      await dbConnect()
-      const dbUser = await User.findOne({ email: session.user.email })
+      try {
+        await dbConnect()
+        const dbUser = await User.findOne({ email: session.user.email })
 
-      session.user.id = dbUser?._id
-      session.user.username = dbUser?.username
-
-      // Generate and store JWT token in the cookie
-      const jwtToken = jwt.sign(
-        {
-          id: dbUser._id,
-          username: dbUser.username,
-          email: dbUser.email,
-        },
-        process.env.JWT_SECRET,
-        { expiresIn: '1d' },
-      )
-
-      const cookie = serialize('token', jwtToken, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
-        maxAge: 24 * 60 * 60, // 1 day
-        path: '/',
-      })
-
-      token.res.setHeader('Set-Cookie', cookie)
-
-      return session
+        session.user.id = dbUser?._id
+        session.user.username = dbUser?.username
+        return session
+      } catch (error) {
+        console.error('Error in session callback:', error)
+        return session
+      }
     },
 
     async redirect({ baseUrl }) {
@@ -87,8 +138,12 @@ export const authOptions = {
 }
 
 const handler = async (req, res) => {
-  const nextAuthHandler = NextAuth(authOptions)
-  return nextAuthHandler(req, res)
+  try {
+    return await NextAuth(req, res, authOptions)
+  } catch (error) {
+    console.error('Error in NextAuth handler:', error)
+    res.status(500).json({ message: 'Internal Server Error' })
+  }
 }
 
 export default handler
