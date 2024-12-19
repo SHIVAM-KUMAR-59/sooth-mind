@@ -78,20 +78,7 @@ The Mental Well-being Platform is a web application designed to help users track
 ---
 
 ## 🧑‍💻 **8. User Profile and Settings**  
-- ⬜ Create a profile page where users can update their details.  
-- ⬜ Add theme preferences and mood notification options.  
-
----
-
-## 🏎️ **9. Testing and Optimization**  
-- ⬜ Test all API routes and frontend pages for functionality.  
-- ⬜ Optimize the app for speed and responsiveness.  
-
----
-
-## 🚀 **10. Deployment**  
-- ⬜ Deploy the project using Vercel.  
-- ⬜ Configure environment variables for the production environment.  
+- ⬜ Create a profile page where users can update their details.    
 
 ---
 
@@ -99,9 +86,8 @@ The Mental Well-being Platform is a web application designed to help users track
 - **Completed**: Steps 1 and 2 ✅  
 - **Next Step**: Start working on the **Journal Entry System**.  
 
----  
-
 Stay tuned for updates as the project progresses! ✨  
+
 
 
 ## 📦 Installation
