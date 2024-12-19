@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const Journal = mongoose.Schema(
+const JournalSchema = mongoose.Schema(
   {
     title: {
       type: String,
@@ -24,6 +24,10 @@ const Journal = mongoose.Schema(
       enum: ['Positive', 'Neutral', 'Negative'],
       default: 'Neutral',
     },
+    chartData: {
+      type: Object,
+      default: {}
+    },
     author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
@@ -34,4 +38,6 @@ const Journal = mongoose.Schema(
   },
 )
 
-export default mongoose.model('Journal', Journal)
+const Journal = mongoose.models.Journal || mongoose.model('JournalSchema')
+
+export default Journal
