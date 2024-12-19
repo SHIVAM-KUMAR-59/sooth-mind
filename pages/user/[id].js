@@ -1,12 +1,12 @@
 'use client'
 
-import { useRouter } from "next/router"
+import { useRouter } from 'next/router'
 
 const Profile = () => {
-    const router = useRouter()
-    const {id} = router.query;
+  const router = useRouter()
+  const { id } = router.query
 
-    return <h1>Profile: {id}</h1>
+  return <h1>Profile: {id}</h1>
 }
 
 export default Profile

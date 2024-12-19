@@ -104,10 +104,13 @@ const Signin = () => {
 
               {/* Submit Button */}
               <button
-                className="p-5 bg-[#4B8652] border-[3px] border-[#FFF8F2] text-[#FFFFFF] text-[20px] sm:text-[28px] font-[600] sm:w-[83%]  rounded-[50px]"
+                className={`sm:p-6 p-2 flex justify-center gap-3 items-center rounded-[50px] text-xl sm:text-2xl w-full sm:w-[83%] text-black bg-slate-400 border-[2px] border-black  ${
+                  isLoading ? 'bg-gray-400' : 'bg-slate-500'
+                }`}
                 type="submit"
+                disabled={isLoading}
               >
-                LOGIN
+                {isLoading ? 'Loading...' : 'LOGIN'}
               </button>
 
               {/* Divider */}
