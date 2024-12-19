@@ -21,12 +21,7 @@ export const authOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        if (
-          !credentials.email ||
-          !credentials.password ||
-          !credentials.username ||
-          !credentials.name
-        ) {
+        if (!credentials.email || !credentials.password) {
           throw new Error('All fields are required')
         }
 
@@ -37,7 +32,10 @@ export const authOptions = {
           console.log(existingUser)
 
           if (existingUser) {
-            // Verify password for existing user
+            if (existingUser.isOAuth) {
+              return existingUser
+            }
+
             const isPasswordValid = await bcrypt.compare(
               credentials.password,
               existingUser.password,

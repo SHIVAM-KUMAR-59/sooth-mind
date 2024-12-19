@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form'
 import '../../app/globals.css'
 import InputField from '@/components/InputField'
 import Link from 'next/link'
-import axios from 'axios'
 import { useState } from 'react'
 import GoogleSignupButton from '@/components/GoogleSignupButton'
 import { useRouter } from 'next/router'
+import { signIn } from 'next-auth/react'
 
 const Signin = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -20,24 +20,19 @@ const Signin = () => {
 
   const onSubmit = async (data) => {
     setIsLoading(true)
-    try {
-      const response = await axios.post('/api/auth/signin', data) // Ensure this matches the API route
+    const result = await signIn('credentials', {
+      email: data.email,
+      password: data.password,
+    })
 
-      if (response.status === 200) {
-        alert('User Logged In successfully')
-        router.push('/')
-      }
-    } catch (error) {
-      if (error.response && error.response.data) {
-        alert(error.response.data.message || 'An error occurred')
-        console.log(error)
-      } else {
-        console.log(error)
-        alert('An error occurred')
-      }
-    } finally {
-      setIsLoading(false)
-      reset()
+    setIsLoading(false)
+    reset()
+    if (result.ok) {
+      router.push('/')
+    }
+
+    if (result?.error) {
+      alert('Error: ' + result.error)
     }
   }
 
