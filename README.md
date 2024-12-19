@@ -11,43 +11,12 @@ The Content Section of the Mental Well-being Platform is designed to enhance use
 
 ---
 
-### 📝 [**Journal Writing**](#-journal-writing)
-- A simple and distraction-free editor for writing daily journal entries.  
-- Auto-save feature to ensure no entry is lost.  
-- Option to add tags or categories to journal entries for easy filtering and retrieval.
-
----
-
-### 🧠 [**Mood Analysis**](#-mood-analysis)
-- Sentiment analysis powered by OpenAI to evaluate user moods.  
-- Detects emotions such as:  
-  - 😊 Positive  
-  - 😐 Neutral  
-  - 😔 Negative  
-- Sentiment results are stored alongside journal entries for historical tracking.
-
----
-
-### 📊 [**Mood Insights Dashboard**](#-mood-insights-dashboard)
-- A visual representation of mood trends over time using **Chart.js**.  
-- Features include:  
-  - Line graphs for tracking mood patterns.  
-  - Filters to analyze data by week, month, or year.  
-  - Insights into the most common mood categories.
-
----
-
-### 🎯 [**Personalized Activity Suggestions**](#-personalized-activity-suggestions)
-- Provides tailored activities based on the user's mood trend, such as:  
-  - **Positive Mood**: Encourages continuation with uplifting activities.  
-  - **Neutral Mood**: Suggests mindfulness practices or creative hobbies.  
-  - **Negative Mood**: Recommends relaxation exercises or seeking support.
-
----
-
-### 📂 [**Data Export Options**](#-data-export-options)
-- **PDF Export**: Users can download a professional PDF report of their journal entries and mood trends.  
-- **CSV Export**: For advanced users, a structured CSV file containing journal data and sentiment analysis results.
+### 1. 🚀 [Features](#🚀-features)
+### 2. 🛠️ [Technologies Used](#🛠️-technologies-used)
+### 3. [Steps for Building](#steps-for-building)
+### 4. 📦 [Installation](#📦-installation)
+### 5. 🛡️ [Security and Privacy](#🛡️-security-and-privacy)
+### 6. 🤝 [Contributing](#🤝-contributing)
 
 
 ## 🚀 Features
@@ -69,6 +38,8 @@ The Content Section of the Mental Well-being Platform is designed to enhance use
 - **Visualization**: Chart.js for displaying mood history trends.
 
 ---
+
+# Steps for building
 
 ## 🛠️ **1. Project Setup Checklist**  
 - ✅ **Project Initialization**:  
