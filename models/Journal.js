@@ -20,9 +20,21 @@ const JournalSchema = mongoose.Schema(
       min: 10,
     },
     sentiment: {
-      type: String,
-      enum: ['Positive', 'Neutral', 'Negative'],
-      default: 'Neutral',
+      score: {
+        type: Number,
+        required: true, // Sentiment score ranges from -1 to 1
+        default: 0,
+      },
+      magnitude: {
+        type: Number,
+        required: true, // Magnitude indicates the strength of sentiment
+        default: 0,
+      },
+      label: {
+        type: String,
+        enum: ['Positive', 'Neutral', 'Negative'],
+        default: 'Neutral',
+      },
     },
     chartData: {
       type: Object,
@@ -34,7 +46,7 @@ const JournalSchema = mongoose.Schema(
     },
   },
   {
-    Timestamp: true,
+    timestamps: true,
   },
 )
 
