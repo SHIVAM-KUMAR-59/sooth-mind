@@ -8,6 +8,7 @@ import { EditorState, RichUtils } from 'draft-js'
 import 'draft-js/dist/Draft.css'
 import '@/app/globals.css'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 // Dynamically import the Editor to prevent SSR issues
 const Editor = dynamic(() => import('draft-js').then((mod) => mod.Editor), {
@@ -51,6 +52,7 @@ const CreateJournal = ({ session }) => {
     reset,
     formState: { errors },
   } = useForm()
+  const router = useRouter()
 
   const onSubmit = async (data) => {
     setIsLoading(true)
@@ -72,6 +74,12 @@ const CreateJournal = ({ session }) => {
           'Content-Type': 'application/json',
         },
       })
+
+      if (response.status === 201) {
+        alert('Journal created successfully')
+        const newJournalId = response.data.data._id
+        router.push(`/journal/${newJournalId}`)
+      }
 
       // Reset editor and form
       setEditorState(EditorState.createEmpty())
