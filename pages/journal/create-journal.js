@@ -78,9 +78,9 @@ const CreateJournal = ({ session }) => {
       reset()
     } catch (error) {
       if (error.response) {
-        console.error('Server Error:', error.response.data)
+        alert('Error: ' + error.response.data.error)
       } else {
-        console.error('Error creating journal:', error.message)
+        alert('Error: ' + error.message)
       }
     } finally {
       setIsLoading(false)
