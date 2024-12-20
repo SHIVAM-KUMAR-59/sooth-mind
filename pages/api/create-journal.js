@@ -1,8 +1,8 @@
-import dbConnect from '@/lib/configDB'
+import configDB from '@/app/lib/configDB'
 import Journal from '@/models/Journal'
 
 export default async function handler(req, res) {
-  await dbConnect()
+  await configDB()
 
   if (req.method === 'POST') {
     const { title, description, content, userId } = req.body
@@ -14,7 +14,19 @@ export default async function handler(req, res) {
     }
 
     try {
-      const journal = new Journal({ title, description, content, userId })
+      const existingJournal = await Journal.findOne({ title })
+      if (existingJournal) {
+        return res
+          .status(400)
+          .json({ success: false, message: 'Journal already exists' })
+      }
+
+      const journal = new Journal({
+        title,
+        description,
+        content,
+        author: userId,
+      })
       await journal.save()
 
       res.status(201).json({ success: true, data: journal })

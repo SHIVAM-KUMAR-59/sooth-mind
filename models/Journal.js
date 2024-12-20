@@ -26,7 +26,7 @@ const JournalSchema = mongoose.Schema(
     },
     chartData: {
       type: Object,
-      default: {}
+      default: {},
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,
@@ -38,6 +38,7 @@ const JournalSchema = mongoose.Schema(
   },
 )
 
-const Journal = mongoose.models.Journal || mongoose.model('JournalSchema')
+const Journal =
+  mongoose.models.Journal || mongoose.model('Journal', JournalSchema)
 
 export default Journal

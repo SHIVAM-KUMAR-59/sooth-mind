@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic'
 import { EditorState, RichUtils } from 'draft-js'
 import 'draft-js/dist/Draft.css'
 import '@/app/globals.css'
+import axios from 'axios'
 
 // Dynamically import the Editor to prevent SSR issues
 const Editor = dynamic(() => import('draft-js').then((mod) => mod.Editor), {
@@ -51,18 +52,39 @@ const CreateJournal = ({ session }) => {
     formState: { errors },
   } = useForm()
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     setIsLoading(true)
 
     // Extract plain text from the editor
-    data.content = editorState.getCurrentContent().getPlainText()
-    console.log('Form data:', data)
+    const plainText = editorState.getCurrentContent().getPlainText()
+    if (!plainText.trim()) {
+      console.error('Content is empty')
+      setIsLoading(false)
+      return
+    }
 
-    // Reset editor and form
-    setEditorState(EditorState.createEmpty())
-    reset()
+    data.content = plainText
+    data.userId = session.user.id
 
-    setIsLoading(false)
+    try {
+      const response = await axios.post('/api/create-journal', data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      // Reset editor and form
+      setEditorState(EditorState.createEmpty())
+      reset()
+    } catch (error) {
+      if (error.response) {
+        console.error('Server Error:', error.response.data)
+      } else {
+        console.error('Error creating journal:', error.message)
+      }
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleEditorChange = (newState) => {
@@ -86,7 +108,7 @@ const CreateJournal = ({ session }) => {
         className="bg-white shadow-md rounded-lg p-6 w-full max-w-2xl"
       >
         <InputField
-          label="Title"
+          label="title"
           type="text"
           placeholder="Enter your title"
           register={register}
@@ -94,7 +116,7 @@ const CreateJournal = ({ session }) => {
           error={errors.title}
         />
         <InputField
-          label="Description"
+          label="description"
           type="text"
           placeholder="Enter your description"
           register={register}
