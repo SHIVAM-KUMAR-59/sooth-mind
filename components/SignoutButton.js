@@ -1,6 +1,6 @@
 'use client'
 
-const { signOut } = require('next-auth/react')
+import { signOut } from 'next-auth/react'
 
 const SignoutButton = () => {
   return (
