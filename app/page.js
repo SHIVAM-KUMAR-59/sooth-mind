@@ -15,6 +15,7 @@ export default async function Home() {
     <div>
       <h1 className="text-3xl">Hello, {session.user.name}</h1>
       <SignoutButton />
+      <Link href="/journal/create-journal">Create Journal</Link>
     </div>
   )
 }
