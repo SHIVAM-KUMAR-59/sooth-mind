@@ -57,9 +57,10 @@ export const authOptions = {
             const hashedPassword = await bcrypt.hash(credentials.password, salt)
 
             const newUser = await User.create({
-              name: credentials.name,
+              name: credentials.name || 'Anonymous',
               email: credentials.email,
-              username: credentials.username,
+              username:
+                credentials.username || `${credentials.email.split('@')[0]}`,
               password: hashedPassword,
             })
 
