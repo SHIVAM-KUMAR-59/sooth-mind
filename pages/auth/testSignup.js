@@ -6,10 +6,10 @@ const TestSignup = () => {
   return (
     <TestLayout>
       <main className=" w-[85%] sm:w-[70%]">
-        <div className="flex gap-2 bg-gradient-to-b from-[#D3E7E7] to-[#A7D8DE] rounded-3xl p-5">
-          <div className="flex flex-col gap-3 py-3 w-full sm:w-[50%]">
+        <div className="flex justify-center items-center gap-2 bg-gradient-to-b from-[#D3E7E7] to-[#A7D8DE] rounded-3xl p-5 shadow-2xl">
+          <div className="flex flex-col gap-3 py-3 w-full lg:w-[50%]">
             <div>
-              <h1 className="text-[#4B8652] text-3xl text-center sm:text-[50px]">
+              <h1 className="text-[#4B8652] text-3xl text-center lg:text-[50px]">
                 WELCOME BACK!
               </h1>
             </div>
@@ -65,7 +65,7 @@ const TestSignup = () => {
               </button>
             </div>
           </div>
-          <div className="border-2 border-black hidden sm:contents h-full w-[50%]">
+          <div className="border-2 border-black hidden lg:contents h-full w-[50%]">
             <Image src="/Login.png" alt="Login" width={500} height={500} />
           </div>
         </div>
