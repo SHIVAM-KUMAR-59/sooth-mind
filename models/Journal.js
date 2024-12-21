@@ -23,7 +23,7 @@ const JournalSchema = mongoose.Schema(
       score: {
         type: Number,
         required: true, // Sentiment score ranges from -1 to 1
-        default: 0,
+        default: 0, // default value
       },
       magnitude: {
         type: Number,
