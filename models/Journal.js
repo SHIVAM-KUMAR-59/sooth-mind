@@ -32,8 +32,8 @@ const JournalSchema = mongoose.Schema(
       },
       label: {
         type: String,
-        enum: ['Positive', 'Neutral', 'Negative'],
-        default: 'Neutral',
+        enum: ['POSITIVE', 'NEUTRAL', 'NEGATIVE'],
+        default: 'NEUTRAL',
       },
     },
     chartData: {
