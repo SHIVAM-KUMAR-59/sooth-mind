@@ -52,7 +52,7 @@ const TestSignup = () => {
               <hr className="w-full h-[3px] bg-[#647D91] sm:w-[90%] sm:mx-auto" />
             </div>
             <div className="w-[80%] mx-auto">
-              <button className="bg-white p-2 sm:p-3 sm:text-xl rounded-2xl w-full text-black opacity-80 border-[#647D91] border-[1.5px] sm:border-[2px] flex justify-center items-center gap-1 sm:w-[80%] sm:rounded-[50px] sm:text-[20px] sm:mx-auto">
+              <button className="bg-white p-2 sm:p-4 sm:text-xl rounded-2xl w-full text-black opacity-80 border-[#647D91] border-[1.5px] sm:border-[2px] flex justify-center items-center gap-1 sm:w-[80%] sm:rounded-[50px] sm:text-[20px] sm:mx-auto">
                 <div className="relative w-[30px] h-[30px] sm:w-[60px] sm:h-[35px]">
                   <Image
                     src="/GoogleLogo.png"
