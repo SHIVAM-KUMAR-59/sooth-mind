@@ -37,8 +37,11 @@ const JournalSchema = mongoose.Schema(
       },
     },
     chartData: {
-      type: Object,
-      default: {},
+      type: {
+        positive: { type: Number, default: 0 },
+        neutral: { type: Number, default: 0 },
+        negative: { type: Number, default: 0 },
+      },
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,
