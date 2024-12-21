@@ -5,7 +5,6 @@ import SignoutButton from '@/components/SignoutButton'
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
-  console.log(session)
 
   if (!session) {
     return <Link href="/auth/signin">Sign In</Link>

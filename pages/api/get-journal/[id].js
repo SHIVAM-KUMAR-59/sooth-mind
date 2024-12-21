@@ -4,8 +4,6 @@ import Journal from '@/models/Journal'
 export default async function handler(req, res) {
   const { id } = req.query // Using req.query instead of req.params
 
-  console.log(id)
-
   if (!id) {
     return res.status(400).json({ message: 'ID is required' })
   }
