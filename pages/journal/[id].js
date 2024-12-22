@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const Journal = () => {
   const router = useRouter()
@@ -47,6 +48,7 @@ const Journal = () => {
     <div>
       <h1>Journal ID: {journal.id}</h1>
       <p>{journal.content}</p>
+      <Link href={`/journal/update-journal/${id}`}>Update Journal</Link>
     </div>
   )
 }
