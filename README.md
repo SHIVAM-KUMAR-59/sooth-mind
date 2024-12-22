@@ -46,7 +46,7 @@ The Content Section of the Mental Well-being Platform is designed to enhance use
 
 ---
 
-# Steps for building
+# 🪜 Steps for building
 
 ## 🛠️ **1. Project Setup Checklist**
 
