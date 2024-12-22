@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import axios from 'axios'
 
 const Journal = () => {
   const router = useRouter()
@@ -32,6 +33,16 @@ const Journal = () => {
     getJournal()
   }, [id]) // Runs when `id` changes
 
+  const handleDelete = async () => {
+    try {
+      const response = await axios.delete(`/api/delete-journal/${id}`)
+      console.log(response)
+      router.push('/')
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   if (loading) {
     return <div>Loading...</div>
   }
@@ -49,6 +60,7 @@ const Journal = () => {
       <h1>Journal ID: {journal.id}</h1>
       <p>{journal.content}</p>
       <Link href={`/journal/update-journal/${id}`}>Update Journal</Link>
+      <button onClick={handleDelete}>Delete Journal</button>
     </div>
   )
 }
