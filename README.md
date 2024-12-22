@@ -12,17 +12,17 @@ The Content Section of the Mental Well-being Platform is designed to enhance use
 
 ---
 
-### 1. 🚀 [Features](#🚀-features)
+### 1. 🚀 [Features](#-🚀-features)
 
-### 2. 🛠️ [Technologies Used](#🛠️-technologies-used)
+### 2. 🛠️ [Technologies Used](#-🛠️-technologies-used)
 
-### 3. 🪜 [Steps for Building](#steps-for-building)
+### 3. 🪜 [Steps for Building](#-🪜-steps-for-building)
 
-### 4. 📦 [Installation](#📦-installation)
+### 4. 📦 [Installation](#-📦-installation)
 
-### 5. 🛡️ [Security and Privacy](#🛡️-security-and-privacy)
+### 5. 🛡️ [Security and Privacy](#-🛡️-security-and-privacy)
 
-### 6. 🤝 [Contributing](#🤝-contributing)
+### 6. 🤝 [Contributing](#-🤝-contributing)
 
 ## 🚀 Features
 
