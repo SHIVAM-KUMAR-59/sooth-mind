@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Navbar = ({ session }) => {
   return (
-    <nav className="flex w-full ">
+    <nav className="sm:flex w-full hidden">
       <div className="flex w-[90%] mx-auto items-center justify-between p-2 uppercase">
         <div>
           <Image src="/Logo.png" height={57} width={150} alt="Logo" />
