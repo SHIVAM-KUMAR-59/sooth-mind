@@ -19,3 +19,117 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* globals.css */
+
+/* Keyframes for animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 1s ease-in-out;
+}
+
+.bounce-in {
+  animation: bounceIn 1s ease-in-out;
+}
+/* Cloud Movement Animation for the first cloud (left to right) */
+/* Cloud Movement Animation for the first cloud (left to right) */
+@keyframes cloudMoveLeftToRight {
+  0% {
+    transform: translateX(0px); /* Start from the left */
+  }
+  50% {
+    transform: translateX(100px); /* Move towards the right */
+  }
+  100% {
+    transform: translateX(0px); /* Return to the original position */
+  }
+}
+
+/* Cloud Movement Animation for the second cloud (right to left) */
+@keyframes cloudMoveRightToLeft {
+  0% {
+    transform: translateX(0px); /* Start from the right */
+  }
+  50% {
+    transform: translateX(-100px); /* Move towards the left */
+  }
+  100% {
+    transform: translateX(0px); /* Return to the original position */
+  }
+}
+
+/* Apply the animation to cloud elements */
+.cloud {
+  position: absolute;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation: cloudMoveLeftToRight 10s ease-in-out infinite;
+}
+
+/* Apply the reverse animation to the second cloud */
+.cloud-reverse {
+  position: absolute;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation: cloudMoveRightToLeft 10s ease-in-out infinite;
+}
+
+@keyframes leafBlow {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-10px) translateY(-10px) rotate(-10deg);
+  }
+  50% {
+    transform: translateX(10px) translateY(10px) rotate(10deg);
+  }
+  75% {
+    transform: translateX(-5px) translateY(5px) rotate(-5deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg) scale(1);
+  }
+}
+
+/* Apply the animation to leaf elements */
+.leaf {
+  position: absolute;
+  animation: leafBlow 7s ease-in-out infinite;
+}
