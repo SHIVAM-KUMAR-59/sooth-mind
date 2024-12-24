@@ -28,7 +28,7 @@ const Navbar = ({ session }) => {
                 Sign Out
               </button>
             ) : (
-              <div className="flex w-[80%] gap-3">
+              <div className="flex w-full gap-3 ">
                 <button className="w-full py-2 rounded-[30px] bg-gradient-to-r from-[#87B1D3] to-[#467DA8]">
                   <Link href="/auth/signin">Login</Link>
                 </button>
