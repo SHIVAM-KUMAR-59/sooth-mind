@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import '../app/globals.css'
+import Link from 'next/link'
 
 const Hero = () => {
   return (
@@ -36,7 +37,7 @@ const Hero = () => {
           />
           <div className="flex flex-col z-10 sm:w-[50%] p-2 absolute bottom-[1%] sm:bottom-[5%] gap-2 sm:gap-10">
             <button className="bg-gradient-to-r rounded-[50px] from-[#FFF8F2] to-[#D7D7D7] sm:w-[60%] mx-auto py-2 px-3 sm:py-3 sm:px-5 text-[#599091] text-[13px] sm:text-[27px] font-[700] uppercase shadow-md animate-fadeIn">
-              Begin Now
+              <Link href="/auth/signin">Begin Now</Link>
             </button>
             <button className="bg-gradient-to-r rounded-[50px] from-[#FFF8F2] mx-auto w-fit to-[#D7D7D7] py-2 px-3 sm:py-3 sm:px-5 text-[#599091] text-[13px] sm:text-[27px] font-[700] uppercase shadow-md animate-fadeIn">
               Gain More Insight
