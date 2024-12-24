@@ -1,4 +1,3 @@
-import SignoutButton from '@/components/SignoutButton'
 import Image from 'next/image'
 
 const Navbar = ({ session }) => {
