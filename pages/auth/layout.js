@@ -1,7 +1,9 @@
 export default function AuthLayout({ children }) {
   return (
-    <div className=" w-full bg-gradient-to-r from-[#D3E7E7] to-[#A7D8DE] p-4">
-      {children}
+    <div className="min-h-screen bg-gradient-to-b from-[#EBF4F5] to-[#B5C6E0] flex justify-center items-center">
+      <div className="w-[85%] mx-auto bg-gradient-to-br from-[#E6E3C4] to-[#BBD5DA] min-h-[600px] rounded-[8px] shadow-md">
+        {children}
+      </div>
     </div>
   )
 }

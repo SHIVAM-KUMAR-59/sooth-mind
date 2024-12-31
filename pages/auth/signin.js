@@ -7,6 +7,7 @@ import { useState } from 'react'
 import GoogleSignupButton from '@/components/GoogleSignupButton'
 import { useRouter } from 'next/router'
 import { signIn } from 'next-auth/react'
+import '@/app/styles.css'
 
 const Signin = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -38,98 +39,14 @@ const Signin = () => {
 
   return (
     <Layout>
-      <main className="min-h-screen w-full flex items-center justify-center p-5">
-        <div className="w-full sm:w-4/5 md:w-3/5 lg:w-[80%] mx-auto flex flex-col sm:flex-row gap-6 sm:gap-3">
-          {/* Left Column */}
-          <div className="w-full sm:w-1/2">
-            <div className="py-3 mx-auto sm:w-[83%]  sm:text-left">
-              <h1 className="text-[#4B8652] text-[40px] sm:text-[50px] font-[700] capitalize">
-                Welcome Back!
-              </h1>
-              <p className="text-[#8661A8] text-[28px] font-[500] mt-5">
-                Rekindle, Reflect, Rejuvenate
-              </p>
-            </div>
-
-            <form
-              className="flex flex-col sm:gap-10 gap-2 sm:mt-4 w-full sm:w-[95%] mx-auto sm:p-2"
-              onSubmit={handleSubmit(onSubmit)}
-            >
-              {isLoading && (
-                <div className="absolute inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center rounded-lg">
-                  <div className="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full border-t-transparent border-white"></div>
-                </div>
-              )}
-
-              {/* Input Fields */}
-              <InputField
-                label="email"
-                type="text"
-                placeholder="Enter Email"
-                register={register}
-                validation={{ required: 'Email is required' }}
-                error={errors.email}
-              />
-              <div>
-                <InputField
-                  label="password"
-                  type="password"
-                  placeholder="Enter Password"
-                  register={register}
-                  validation={{
-                    required: 'Password is required',
-                    minLength: {
-                      value: 8,
-                      message: 'Password must be at least 8 characters',
-                    },
-                    pattern: {
-                      value:
-                        /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/,
-                      message:
-                        'Password must contain at least one uppercase letter and one special character',
-                    },
-                  }}
-                  error={errors.password}
-                />
-                <div className="sm:w-[83%] p-2 sm:text-xl text-right hover:underline">
-                  <Link
-                    href="/auth/forgotpassword"
-                    prefetch={false}
-                    className="text-[#8661A8] cursor-pointer text-md"
-                  >
-                    Forgot Password ?
-                  </Link>
-                </div>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                className={`sm:p-6 p-2 flex justify-center gap-3 items-center rounded-[50px] text-xl sm:text-2xl w-full sm:w-[83%] text-black bg-slate-400 border-[2px] border-black  ${
-                  isLoading ? 'bg-gray-400' : 'bg-slate-500'
-                }`}
-                type="submit"
-                disabled={isLoading}
-              >
-                {isLoading ? 'Loading...' : 'LOGIN'}
-              </button>
-
-              {/* Divider */}
-              <hr className="h-[3px] bg-[#647D91] border-0 sm:w-[83%] " />
-
-              {/* Google Signup Button */}
-              <GoogleSignupButton />
-            </form>
-          </div>
-
-          {/* Right Column (Image) */}
-          <div
-            className="w-full sm:w-1/2 rounded-[20px] bg-cover bg-center"
-            style={{
-              backgroundImage: "url('/Login.png')",
-            }}
-          ></div>
-        </div>
-      </main>
+      <div className="w-[90%] h-full border-2 border-white mx-auto py-2">
+        <h1 className="text-center text-[32px] fraunces-semiBold mt-2 text-black">
+          Welcome Back
+        </h1>
+        <p className="text-center text-[22px] text-black dm-sans-light mt-2">
+          Pause, Reflect, Heal
+        </p>
+      </div>
     </Layout>
   )
 }

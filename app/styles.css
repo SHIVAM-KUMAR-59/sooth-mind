@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 .roboto-thin {
   font-family: 'Roboto', serif;
@@ -78,8 +80,103 @@
   font-style: normal;
 }
 
+.dm-serif-light {
+  font-family: 'DM Serif Text', serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
 .dm-serif-italic {
   font-family: 'DM Serif Text', serif;
   font-weight: 400;
   font-style: italic;
+}
+
+.dm-sans {
+  font-family: 'DM Sans', serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-sans-light {
+  font-family: 'DM Sans Text', serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.dm-sans-medium {
+  font-family: 'DM Sans Text', serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.dm-sans-bold {
+  font-family: 'DM Sans Text', serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Thin */
+.fraunces-thin {
+  font-family: 'Fraunces', serif;
+  font-weight: 100; /* Thin weight */
+  font-style: normal;
+  font-optical-sizing: auto;
+  font-variation-settings: 'SOFT' 0, 'WONK' 0;
+}
+
+/* Light */
+.fraunces-light {
+  font-family: 'Fraunces', serif;
+  font-weight: 300; /* Thin weight */
+  font-style: normal;
+  font-optical-sizing: auto;
+  font-variation-settings: 'SOFT' 0, 'WONK' 0;
+}
+
+/* Regular */
+.fraunces-regular {
+  font-family: 'Fraunces', serif;
+  font-weight: 400; /* Regular weight */
+  font-style: normal;
+  font-optical-sizing: auto;
+  font-variation-settings: 'SOFT' 0, 'WONK' 0;
+}
+
+.fraunces-medium {
+  font-family: 'Fraunces', serif;
+  font-weight: 500; /* Bold weight */
+  font-style: normal;
+  font-optical-sizing: auto;
+  font-variation-settings: 'SOFT' 0, 'WONK' 0;
+}
+
+.fraunces-semiBold {
+  font-family: 'Fraunces', serif;
+  font-weight: 600; /* Bold weight */
+  font-style: normal;
+  font-optical-sizing: auto;
+  font-variation-settings: 'SOFT' 0, 'WONK' 0;
+}
+
+/* Bold */
+.fraunces-bold {
+  font-family: 'Fraunces', serif;
+  font-weight: 700; /* Bold weight */
+  font-style: normal;
+  font-optical-sizing: auto;
+  font-variation-settings: 'SOFT' 0, 'WONK' 0;
+}
+
+/* Extra Bold */
+.fraunces-extra-bold {
+  font-family: 'Fraunces', serif;
+  font-weight: 800; /* Extra Bold weight */
+  font-style: normal;
+  font-optical-sizing: auto;
+  font-variation-settings: 'SOFT' 0, 'WONK' 0;
 }
