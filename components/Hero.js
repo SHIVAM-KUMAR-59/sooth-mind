@@ -16,22 +16,22 @@ const Hero = ({ session }) => {
     <section className="relative min-h-screen flex items-center justify-center p-3">
       <div className="w-full h-full flex flex-col justify-center items-center gap-4">
         <div className="w-[90%] mx-auto">
-          <p className="text-[35px] text-black w-full text-center dm-serif ">
+          <p className="text-[30px] text-black text-center dm-serif md:text-[50px] lg:text-[65px] xl:text-[80px]">
             Track Your Emotional Journey
           </p>
         </div>
-        <div className="w-[70%] mx-auto">
-          <p className="text-[18px] text-black w-full text-center roboto-light">
+        <div className="w-[80%] md:w-[80%] lg:w-[75%] xl:w-[65%] mx-auto">
+          <p className="text-[15px] md:text-[25px] lg:text-[32px] xl:text-[39px] text-black w-full text-center roboto-light">
             Write about your day, and let AI help you understand your emotional
             patterns through beautiful visualisations.
           </p>
         </div>
-        <div className="w-[90%] mx-auto mt-3">
+        <div className="w-[90%] lg:w-[60%] mx-auto mt-3">
           <Link
             href={route}
-            className="text-center mx-auto py-3 w-[60%] rounded-[8px] bg-black cursor-pointer hover:bg-[#0f0f0f] flex justify-center items-center roboto-bold text-[20px]"
+            className="text-center mx-auto px-2 py-3 w-[70%]  rounded-[8px] bg-black cursor-pointer hover:bg-[#292929] flex justify-center items-center roboto-bold text-[18px] md:text-[25px] lg:text-[30px] xl:text-[35px] sm:mt-4 hover:scale-105 hover:shadow-lg transition-all duration-200"
           >
-            Begin Your Journey --{'>'}
+            Begin Your Journey
           </Link>
         </div>
       </div>
