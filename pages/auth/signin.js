@@ -10,6 +10,7 @@ import { signIn } from 'next-auth/react'
 import '@/app/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import Image from 'next/image'
 
 const Signin = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -41,15 +42,9 @@ const Signin = () => {
 
   return (
     <Layout>
-      <div className="w-[90%] h-full mx-auto py-2">
-        <h1 className="text-center text-[32px] fraunces-semiBold mt-2 text-black">
-          Welcome Back
-        </h1>
-        <p className="text-center text-[22px] text-black dm-sans-light mt-2">
-          Pause, Reflect, Heal
-        </p>
-        <form className="flex flex-col gap-3 justify-center items-center w-[90%] mx-auto mt-6 text-black">
-          <div className="flex flex-col w-[95%] mx-auto mt-2">
+      <div className="w-[90%] xl:w-[50%] h-full mx-auto pb-2 relative">
+        <form className="flex flex-col gap-3 justify-center items-center w-[90%] xl:w-full  mx-auto mt-6 text-black">
+          <div className="flex flex-col w-[95%] xl:w-[70%] mx-auto mt-2">
             <label className="ml-1 inter-regular ">Email</label>
             <input
               placeholder="example@gmail.com"
@@ -59,7 +54,7 @@ const Signin = () => {
               Error..........
             </p>
           </div>
-          <div className="flex flex-col w-[95%] mx-auto mt-2">
+          <div className="flex flex-col w-[95%] xl:w-[70%] mx-auto mt-2">
             <label className="ml-1 inter-regular ">Email</label>
             <input
               placeholder="example@gmail.com"
@@ -69,11 +64,11 @@ const Signin = () => {
               Error..........
             </p>
           </div>
-          <p className="w-full text-right px-2 underline poppins-extralight">
+          <p className="w-full xl:w-[70%] text-right px-2 xl:px-0 underline poppins-extralight cursor-pointer">
             Forgot Password?
           </p>
           <button
-            className="bg-[#A7A68A] w-[95%] mx-auto rounded-[8px] py-2 text-[22px] mt-3 inter-medium flex items-center justify-center gap-2"
+            className="bg-[#A7A68A] w-[95%] xl:w-[70%] mx-auto rounded-[8px] py-2 text-[22px] mt-3 inter-medium flex items-center justify-center gap-2 hover:bg-[#b2af8c] hover:shadow-md transition-all duration-200"
             type="submit"
             onClick={() => console.log('Clicked')}
           >
@@ -89,9 +84,16 @@ const Signin = () => {
             Don't Have an Account? Signup
           </Link>
         </div>
-        <hr className="my-4 border-1 border-[rgba(0,0,0,0.3)]"></hr>
+        <hr className="my-4 border-1 xl:border-3 border-[rgba(0,0,0,0.3)]"></hr>
         <GoogleSignupButton />
       </div>
+      <div
+        className="w-[45%] hidden xl:flex justify-center items-center bg-[url('/Login.png')]"
+        style={{
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      ></div>
     </Layout>
   )
 }
