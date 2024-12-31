@@ -1,6 +1,14 @@
-import { Geist, Geist_Mono } from 'next/font/google'
+import {
+  Geist,
+  Geist_Mono,
+  Inter,
+  Roboto,
+  Fraunces,
+  Poppins,
+} from 'next/font/google'
 import './globals.css'
 
+// Font configurations
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -9,6 +17,29 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+})
+
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+})
+
+const roboto = Roboto({
+  variable: '--font-roboto',
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '500', '700', '900'],
+})
+
+const fraunces = Fraunces({
+  variable: '--font-fraunces',
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+const poppins = Poppins({
+  variable: '--font-poppins',
+  subsets: ['latin'],
+  weight: ['400', '700'], // Specify weights if needed
 })
 
 export const metadata = {
@@ -20,7 +51,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-r from-[#D3E7E7] to-[#A7D8DE]`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${roboto.variable} ${fraunces.variable} ${poppins.variable} antialiased bg-gradient-to-b from-[#EBF4F5] to-[#B5C6E0]`}
       >
         {children}
       </body>

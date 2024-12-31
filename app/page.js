@@ -10,7 +10,7 @@ export default async function Home() {
   return (
     <>
       <Navbar session={session} />
-      <Hero />
+      <Hero session={session} />
     </>
   )
 }
