@@ -93,31 +93,75 @@
   font-style: italic;
 }
 
-.dm-sans {
+/* Thin (100) */
+.dm-sans-thin {
+  font-family: 'DM Sans', serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+/* Extra Light (200) */
+.dm-sans-extra-light {
+  font-family: 'DM Sans', serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+/* Light (300) */
+.dm-sans-light {
+  font-family: 'DM Sans', serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Regular (400) */
+.dm-sans-regular {
   font-family: 'DM Sans', serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
 
-.dm-sans-light {
-  font-family: 'DM Sans Text', serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-}
-
+/* Medium (500) */
 .dm-sans-medium {
-  font-family: 'DM Sans Text', serif;
+  font-family: 'DM Sans', serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
 }
 
+/* Semi Bold (600) */
+.dm-sans-semi-bold {
+  font-family: 'DM Sans', serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Bold (700) */
 .dm-sans-bold {
-  font-family: 'DM Sans Text', serif;
+  font-family: 'DM Sans', serif;
   font-optical-sizing: auto;
   font-weight: 700;
+  font-style: normal;
+}
+
+/* Extra Bold (800) */
+.dm-sans-extra-bold {
+  font-family: 'DM Sans', serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* Black (900) */
+.dm-sans-black {
+  font-family: 'DM Sans', serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
   font-style: normal;
 }
 

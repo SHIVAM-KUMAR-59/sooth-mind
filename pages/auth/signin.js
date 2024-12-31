@@ -50,9 +50,11 @@ const Signin = () => {
               placeholder="example@gmail.com"
               className="p-2 rounded-[8px]"
             />
-            <p className="ml-1 inter-regular text-red-500 mt-2">
-              Error..........
-            </p>
+            {errors && (
+              <p className="ml-1 inter-regular text-red-500 mt-2">
+                Error..........
+              </p>
+            )}
           </div>
           <div className="flex flex-col w-[95%] xl:w-[70%] mx-auto mt-2">
             <label className="ml-1 inter-regular ">Email</label>
@@ -60,9 +62,11 @@ const Signin = () => {
               placeholder="example@gmail.com"
               className="p-2 rounded-[8px]"
             />
-            <p className="ml-1 inter-regular text-red-500 mt-2">
-              Error..........
-            </p>
+            {errors && (
+              <p className="ml-1 inter-regular text-red-500 mt-2">
+                Error..........
+              </p>
+            )}
           </div>
           <p className="w-full xl:w-[70%] text-right px-2 xl:px-0 underline poppins-extralight cursor-pointer">
             Forgot Password?
