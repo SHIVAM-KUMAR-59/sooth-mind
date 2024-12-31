@@ -5,11 +5,11 @@ const GoogleSignupButton = () => {
   return (
     <button
       type="button"
-      className="sm:p-3 p-2 flex justify-center gap-3 items-center rounded-[50px] text-xl sm:text-2xl w-full sm:w-[83%] text-black bg-white border-[2px] border-black "
+      className="bg-[#242C2F] w-[95%] mx-auto rounded-[8px] py-2 mt-3 gap-1 flex items-center justify-center inter-medium text-[20px]"
       onClick={() => signIn('google')}
     >
-      <Image src="/GoogleLogo.png" height={62} width={75} alt="Google Logo" />
-      <span className="ml-2 capitalize">SIGN IN WITH GOOGLE</span>
+      <Image src="/GoogleLogo.png" height={38} width={38} alt="Google Logo" />
+      <span className="capitalize">Continue With Google</span>
     </button>
   )
 }
