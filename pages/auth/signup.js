@@ -37,7 +37,7 @@ const Signup = () => {
     }
   }
   return (
-    <Layout>
+    <Layout type={'signup'}>
       <main className="min-h-screen w-full flex items-center justify-center p-5">
         <div className="w-full sm:w-4/5 md:w-3/5 lg:w-[80%] mx-auto flex flex-col sm:flex-row gap-6 sm:gap-3">
           {/* Left Column */}

@@ -41,7 +41,7 @@ const Signin = () => {
   }
 
   return (
-    <Layout>
+    <Layout type={'signin'}>
       <div className="w-[90%] xl:w-[50%] h-full mx-auto pb-2 relative">
         <form className="flex flex-col gap-3 justify-center items-center w-[90%] xl:w-full  mx-auto mt-6 text-black">
           <div className="flex flex-col w-[95%] xl:w-[70%] mx-auto mt-2">
