@@ -1,7 +1,8 @@
 'use client'
-
 import '../app/globals.css'
 import '@/app/styles.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
@@ -29,9 +30,10 @@ const Hero = ({ session }) => {
         <div className="w-[90%] lg:w-[60%] mx-auto mt-3">
           <Link
             href={route}
-            className="text-center mx-auto px-2 py-3 w-[70%]  rounded-[8px] bg-black cursor-pointer hover:bg-[#292929] flex justify-center items-center roboto-bold text-[18px] md:text-[25px] lg:text-[30px] xl:text-[35px] sm:mt-4 hover:scale-105 hover:shadow-lg transition-all duration-200"
+            className="text-center mx-auto px-2 py-3 w-[70%]  rounded-[8px] bg-black cursor-pointer hover:bg-[#292929] flex justify-center gap-3 items-center roboto-bold text-[18px] md:text-[25px] lg:text-[30px] xl:text-[35px] sm:mt-4 hover:scale-105 hover:shadow-lg transition-all duration-200"
           >
             Begin Your Journey
+            <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </div>
       </div>
