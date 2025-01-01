@@ -124,7 +124,7 @@ const Signup = () => {
         <GoogleSignupButton />
       </div>
       <div
-        className="w-[45%] hidden xl:flex justify-center items-center bg-[url('/Login.png')]"
+        className="w-[45%] hidden xl:flex justify-center items-center bg-[url('/Signup.png')]"
         style={{
           backgroundSize: 'cover',
           backgroundPosition: 'center',
