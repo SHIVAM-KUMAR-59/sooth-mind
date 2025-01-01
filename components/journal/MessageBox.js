@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const MessageBox = ({ message, isError, setIsError, setMessage, id }) => (
   <div className="w-[65%] xl:w-[30%] bg-black bg-opacity-80 absolute text-center p-4 inter-medium flex flex-col items-center justify-center gap-4 rounded-lg text-[20px] md:text-[30px]">
     <div>{message}</div>
