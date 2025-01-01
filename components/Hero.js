@@ -27,13 +27,16 @@ const Hero = ({ session }) => {
             patterns through beautiful visualisations.
           </p>
         </div>
-        <div className="w-[90%] lg:w-[60%] mx-auto mt-3">
+        <div className="group w-[90%] lg:w-[60%] mx-auto mt-3">
           <Link
             href={route}
             className="text-center mx-auto px-2 py-3 w-[70%]  rounded-[8px] bg-black cursor-pointer hover:bg-[#292929] flex justify-center gap-3 items-center roboto-bold text-[18px] md:text-[25px] lg:text-[30px] xl:text-[35px] sm:mt-4 hover:scale-105 hover:shadow-lg transition-all duration-200"
           >
             Begin Your Journey
-            <FontAwesomeIcon icon={faArrowRight} />
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              className="group-hover:translate-x-2 transition-all duration-500"
+            />
           </Link>
         </div>
       </div>
