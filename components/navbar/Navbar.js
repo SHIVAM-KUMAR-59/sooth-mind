@@ -1,5 +1,4 @@
 'use client'
-
 import SignoutButton from '../auth/SignoutButton'
 import NavButton from './NavButton'
 

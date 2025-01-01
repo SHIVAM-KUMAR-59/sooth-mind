@@ -232,6 +232,12 @@
   font-weight: 100;
   font-style: normal;
 }
+.inter-soft {
+  font-family: 'Inter', serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
 .inter-regular {
   font-family: 'Inter', serif;
   font-optical-sizing: auto;

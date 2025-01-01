@@ -1,200 +1,58 @@
-import { getServerSession } from 'next-auth'
-import { authOptions } from '../api/auth/[...nextauth]'
-import InputField from '@/components/InputField'
-import { useForm } from 'react-hook-form'
-import { useState } from 'react'
-import dynamic from 'next/dynamic'
-import { EditorState, RichUtils } from 'draft-js'
-import 'draft-js/dist/Draft.css'
+import '@/app/styles.css'
 import '@/app/globals.css'
-import axios from 'axios'
-import { useRouter } from 'next/navigation'
 
-// Dynamically import the Editor to prevent SSR issues
-const Editor = dynamic(() => import('draft-js').then((mod) => mod.Editor), {
-  ssr: false,
-})
-
-export async function getServerSideProps(context) {
-  const session = await getServerSession(context.req, context.res, authOptions)
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/auth/signin',
-        permanent: false,
-      },
-    }
-  }
-
-  const sanitizedSession = {
-    ...session,
-    user: {
-      ...session.user,
-      id: session.user.id?.toString() || null,
-      image: session.user.image || null,
-    },
-  }
-
-  return {
-    props: { session: sanitizedSession },
-  }
-}
-
-const CreateJournal = ({ session }) => {
-  const [isLoading, setIsLoading] = useState(false)
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty(),
-  )
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm()
-  const router = useRouter()
-
-  const onSubmit = async (data) => {
-    setIsLoading(true)
-
-    // Extract plain text from the editor
-    const plainText = editorState.getCurrentContent().getPlainText()
-    if (!plainText.trim()) {
-      console.error('Content is empty')
-      setIsLoading(false)
-      return
-    }
-
-    data.content = plainText
-    data.userId = session.user.id
-
-    try {
-      const response = await axios.post('/api/create-journal', data, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-
-      if (response.status === 201) {
-        alert('Journal created successfully')
-        const newJournalId = response.data.data._id
-        router.push(`/journal/${newJournalId}`)
-      }
-
-      // Reset editor and form
-      setEditorState(EditorState.createEmpty())
-      reset()
-    } catch (error) {
-      if (error.response) {
-        alert('Error: ' + error.response.data.error)
-      } else {
-        alert('Error: ' + error.message)
-      }
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  const handleEditorChange = (newState) => {
-    setEditorState(newState)
-  }
-
-  const toggleInlineStyle = (style) => {
-    setEditorState(RichUtils.toggleInlineStyle(editorState, style))
-  }
-
-  const toggleBlockType = (blockType) => {
-    setEditorState(RichUtils.toggleBlockType(editorState, blockType))
-  }
-
+const CreateJournal = () => {
   return (
-    <div className="bg-gray-500 min-h-screen flex flex-col items-center py-10 border-2 border-black">
-      <h1 className="text-3xl font-bold mb-6">Create Journal</h1>
-      <p className="text-lg mb-4">Welcome, {session.user.name}</p>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="bg-white shadow-md rounded-lg p-6 w-full max-w-2xl"
-      >
-        <InputField
-          label="title"
-          type="text"
-          placeholder="Enter your title"
-          register={register}
-          validation={{ required: 'Title is required' }}
-          error={errors.title}
-        />
-        <InputField
-          label="description"
-          type="text"
-          placeholder="Enter your description"
-          register={register}
-          validation={{ required: 'Description is required' }}
-          error={errors.description}
-        />
-
-        {/* Draft.js Editor */}
-        <div className="mt-4">
-          <label className="block text-gray-700 font-bold mb-2">Content</label>
-          <div className="mb-3 flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={() => toggleInlineStyle('BOLD')}
-              className="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded"
-            >
-              Bold
-            </button>
-            <button
-              type="button"
-              onClick={() => toggleInlineStyle('ITALIC')}
-              className="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded"
-            >
-              Italic
-            </button>
-            <button
-              type="button"
-              onClick={() => toggleInlineStyle('UNDERLINE')}
-              className="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded"
-            >
-              Underline
-            </button>
-            <button
-              type="button"
-              onClick={() => toggleBlockType('header-one')}
-              className="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded"
-            >
-              H1
-            </button>
-            <button
-              type="button"
-              onClick={() => toggleBlockType('header-two')}
-              className="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded"
-            >
-              H2
-            </button>
-            <button
-              type="button"
-              onClick={() => toggleBlockType('blockquote')}
-              className="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded"
-            >
-              Blockquote
-            </button>
+    <>
+      <main className="min-h-screen bg-gradient-to-br from-[#E6E3C4] to-[#BBD5DA]">
+        <div className="w-full flex flex-col justify-center items-center">
+          <div className="text-center">
+            <h1 className="text-[30px] fraunces-semiBold text-black mt-6">
+              Convey Your Feelings
+            </h1>
           </div>
-          <div className="border border-gray-300 rounded p-4 min-h-[200px] bg-white">
-            <Editor editorState={editorState} onChange={handleEditorChange} />
+          <div className="w-[92%] mx-auto mt-8 ">
+            <form className="flex flex-col gap-4">
+              <div className="flex items-center justify-between w-full">
+                <label className="w-[30%] text-[18px] inter-soft text-black">
+                  Title:
+                </label>
+                <input
+                  placeholder="Tuesday, December 31, 2024"
+                  className="w-[70%] px-2 py-1 rounded-[8px] bg-[#FFF7F7] text-black text-[15px] focus:outline-none"
+                />
+              </div>
+              <div className="flex justify-between w-full mt-2">
+                <label className="w-[30%] text-[18px] inter-soft text-black">
+                  Description:
+                </label>
+                <textarea
+                  placeholder="Today feels like a steady day - not particularly great, but not bad either. My energy levels are moderate, and I'm managing to go through my daily routine without much difficulty."
+                  className="w-[70%] px-2 py-1 rounded-[8px] bg-[#FFF7F7] text-black text-[15px] focus:outline-none"
+                  rows={4}
+                />
+              </div>
+              <div className="flex flex-col w-full gap-2 mt-2">
+                <label className="text-[18px] inter-soft text-black">
+                  Write Today's Entry:
+                </label>
+                <textarea
+                  placeholder="How are you feeling today?"
+                  className="w-[100%] px-2 py-1 rounded-[8px] bg-[#FFF7F7] text-black focus:outline-none text-[15px]"
+                  rows={10}
+                />
+              </div>
+              <button
+                className="bg-gradient-to-t to-[#0F0E0E] from-[#5C5656] text-white inter-medium rounded-[5px] text-[20px] w-full py-2"
+                type="submit"
+              >
+                Save and Generate Analysis
+              </button>
+            </form>
           </div>
         </div>
-
-        <button
-          type="submit"
-          disabled={isLoading}
-          className={`mt-6 w-full py-2 text-white font-bold rounded ${
-            isLoading ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'
-          }`}
-        >
-          {isLoading ? 'Submitting...' : 'Submit'}
-        </button>
-      </form>
-    </div>
+      </main>
+    </>
   )
 }
 
