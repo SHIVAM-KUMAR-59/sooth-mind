@@ -5,7 +5,7 @@ import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import Layout from './layout'
 import InputField from '@/components/InputField'
-import GoogleSignupButton from '@/components/GoogleSignupButton'
+import GoogleSignupButton from '@/components/auth/GoogleSignupButton'
 import Link from 'next/link'
 
 const Signup = () => {

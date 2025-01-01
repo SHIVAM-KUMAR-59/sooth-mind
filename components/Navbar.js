@@ -1,19 +1,18 @@
 'use client'
-import { signOut } from 'next-auth/react'
-import Image from 'next/image'
+
 import Link from 'next/link'
-import SignoutButton from './SignoutButton'
+import SignoutButton from './auth/SignoutButton'
 
 const Navbar = ({ session }) => {
   return (
     <nav className="flex w-full p-2">
-      {session ? (
-        <>
-          <SignoutButton />
-        </>
-      ) : (
-        <div className="w-[95%] mx-auto flex gap-4 items-center justify-between">
-          <div className="text-black">Logo</div>
+      <div className="w-[95%] mx-auto flex gap-4 items-center justify-between">
+        <div className="text-black">Logo</div>
+        {session ? (
+          <>
+            <SignoutButton />
+          </>
+        ) : (
           <div className="flex gap-4 w-[60%] md:w-[50%] xl:w-[30%]">
             <Link
               href="/auth/signup"
@@ -28,8 +27,8 @@ const Navbar = ({ session }) => {
               Login
             </Link>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </nav>
   )
 }

@@ -30,9 +30,11 @@ const UserSchema = mongoose.Schema({
   },
   profileImage: {
     type: String,
+    default: null,
   },
   bio: {
     type: String,
+    default: null,
   },
   journalHistory: {
     type: [mongoose.Schema.Types.ObjectId],
