@@ -7,7 +7,6 @@ export default async function handler(req, res) {
   await configDB()
 
   if (req.method === 'POST') {
-    console.log('HIT')
     const { title, description, content, userId } = req.body
 
     if (!title || !description || !content || !userId) {
