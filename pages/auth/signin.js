@@ -72,7 +72,7 @@ const Signin = () => {
             name="password"
             label="Password"
             type="password"
-            placeholder="Realmex7@123"
+            placeholder="equeqSASxibkabc@1anckc"
             register={register}
             errors={errors}
             validationRules={{
