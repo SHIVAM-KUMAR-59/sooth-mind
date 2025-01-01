@@ -1,8 +1,25 @@
 import '@/app/styles.css'
 import '@/app/globals.css'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
+
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 const CreateJournal = () => {
+  const router = useRouter()
+  const [session, setSession] = useState(null)
+  const [message, setMessage] = useState(null)
+
+  useEffect(() => {
+    if (router.query.session) {
+      setSession(JSON.parse(router.query.session))
+    }
+  }, [router.query.session])
+
+  console.log(session?.user?.id)
+
   const {
     register,
     handleSubmit,
@@ -10,11 +27,26 @@ const CreateJournal = () => {
     formState: { errors },
   } = useForm()
   const onSubmit = async (data) => {
-    console.log(data)
+    try {
+      data.userId = session.user.id
+      const response = await axios.post('/api/create-journal', data)
+      console.log('response', response)
+      if (response.status === 201) {
+        setMessage('Journal created successfully')
+      } else {
+        setMessage('Error creating journal')
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        setMessage(error.response.data.message)
+      } else {
+        setMessage('An unexpected error occurred')
+      }
+    }
   }
   return (
     <>
-      <main className="min-h-screen bg-gradient-to-br from-[#E6E3C4] to-[#BBD5DA]">
+      <main className="min-h-screen bg-gradient-to-br from-[#E6E3C4] to-[#BBD5DA] relative flex justify-center items-center">
         <div className="w-full flex flex-col justify-center items-center">
           <div className="text-center">
             <h1 className="text-[30px] fraunces-semiBold text-black mt-6">
@@ -92,6 +124,19 @@ const CreateJournal = () => {
             </form>
           </div>
         </div>
+        {message && (
+          <div className="w-[65%] bg-black bg-opacity-60 absolute text-center p-4 inter-medium flex flex-col items-center justify-center gap-4 rounded-lg text-[20px]">
+            <div>{message}</div>
+            <div className="w-[50%]">
+              <Link
+                href="/"
+                className="text-white bg-slate-400 py-2 block w-full rounded-[8px] text-[20px] cursor-pointer"
+              >
+                Okay
+              </Link>
+            </div>
+          </div>
+        )}
       </main>
     </>
   )

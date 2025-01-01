@@ -7,6 +7,7 @@ export default async function handler(req, res) {
   await configDB()
 
   if (req.method === 'POST') {
+    console.log('HIT')
     const { title, description, content, userId } = req.body
 
     if (!title || !description || !content || !userId) {
@@ -21,7 +22,7 @@ export default async function handler(req, res) {
       if (existingJournal) {
         return res
           .status(400)
-          .json({ success: false, message: 'Journal already exists' })
+          .send({ success: false, message: 'Journal already exists' })
       }
 
       // Get sentiment analysis
