@@ -36,14 +36,14 @@ const Form = ({ user }) => {
         acc[key] = data[key]
       }
       return acc
-    }, [])
+    }, {})
 
     setIsLoading(true) // Start loading state
     console.log('changedValues', changedValues)
 
     try {
       const response = await axios.patch(
-        `/api/update-user/${user?.id}`,
+        `/api/update-user/${user.id}`,
         changedValues,
         {
           headers: {

@@ -5,22 +5,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Menu from '@/components/user/Menu'
 
-import Input from '@/components/user/Input'
-import Form from '@/components/user/Form'
-import {
-  faRightFromBracket,
-  faUserLarge,
-} from '@fortawesome/free-solid-svg-icons'
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import Personal from '@/components/user/Personal'
+import axios from 'axios'
 
 const account = () => {
   const [user, setUser] = useState({})
   const [selected, setSelected] = useState('Account')
 
+  console.log(selected)
+
   useEffect(() => {
     const session = JSON.parse(localStorage.getItem('session'))
 
     const user = session.user
+
     const { name, id, image, email } = user
     setUser({ name, id, image, email })
   }, [])
