@@ -154,8 +154,8 @@ const JournalData = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
-      <div className="max-w-4xl mx-auto space-y-6">
+    <div className="min-h-screen bg-gradient-to-t from-[#B8C9E1] to-[#EAF3F5] py-8 px-4">
+      <div className="max-w-4xl mx-auto space-y-6 mt-5">
         <div className="bg-white rounded-lg shadow-lg p-6">
           <div className="space-y-4">
             <h1 className="text-2xl font-bold text-gray-800">
@@ -164,7 +164,7 @@ const JournalData = () => {
             <div className="flex items-center text-sm text-gray-500">
               <span>{new Date(journal.createdAt).toLocaleDateString()}</span>
               <span className="mx-2">•</span>
-              <span>ID: {journal.id}</span>
+              <span>ID: {journal._id}</span>
             </div>
             <p className="text-gray-600 whitespace-pre-wrap ">
               {journal.description || 'No description provided'}
@@ -172,9 +172,11 @@ const JournalData = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-black">
-          <h2 className="text-xl font-bold mb-4">Sentiment Analysis</h2>
-          <div className="h-64 border-2 border-black">
+        <div className="bg-white rounded-lg shadow-lg p-6">
+          <h2 className="text-xl font-bold mb-4 text-zinc-600">
+            Sentiment Analysis
+          </h2>
+          <div className="h-64 ">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={sentimentData}>
                 <XAxis dataKey="name" />
@@ -182,25 +184,25 @@ const JournalData = () => {
                 <Tooltip />
                 <Bar dataKey="negative" fill="#ff0000" name="Negative" />
                 <Bar dataKey="neutral" fill="#808080" name="Neutral" />
-                <Bar dataKey="positive" fill="#00ff00" name="Positive" />
+                <Bar dataKey="positive" fill="#22C55E" name="Positive" />
               </BarChart>
             </ResponsiveContainer>
           </div>
           <div className="mt-4 grid grid-cols-3 gap-4 text-center">
-            <div className="p-3 bg-red-50 rounded-lg">
-              <p className="text-sm text-gray-600">Negative</p>
+            <div className="p-3 bg-red-400 rounded-lg">
+              <p className="text-sm text-white ">Negative</p>
               <p className="font-bold">
                 {(journal.chartData?.negative || 0).toFixed(2)}
               </p>
             </div>
-            <div className="p-3 bg-gray-50 rounded-lg">
-              <p className="text-sm text-gray-600">Neutral</p>
+            <div className="p-3 bg-gray-500 rounded-lg">
+              <p className="text-sm text-white">Neutral</p>
               <p className="font-bold">
                 {(journal.chartData?.neutral || 0).toFixed(2)}
               </p>
             </div>
-            <div className="p-3 bg-green-50 rounded-lg">
-              <p className="text-sm text-gray-600">Positive</p>
+            <div className="p-3 bg-green-500 rounded-lg">
+              <p className="text-sm text-white">Positive</p>
               <p className="font-bold">
                 {(journal.chartData?.positive || 0).toFixed(2)}
               </p>
@@ -209,21 +211,25 @@ const JournalData = () => {
         </div>
 
         <div className="bg-white rounded-lg shadow-lg p-6">
-          <h2 className="text-xl font-bold mb-4">Overall Sentiment</h2>
+          <h2 className="text-xl font-bold mb-4 text-zinc-600">
+            Overall Sentiment
+          </h2>
           <div className="space-y-2">
             <div className="flex justify-between items-center">
               <span className="text-gray-600">Label:</span>
-              <span className="font-medium">{journal.sentiment?.label}</span>
+              <span className="font-medium text-gray-600">
+                {journal.sentiment?.label}
+              </span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-gray-600">Score:</span>
-              <span className="font-medium">
+              <span className="font-medium text-gray-600">
                 {journal.sentiment?.score.toFixed(2)}
               </span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-gray-600">Magnitude:</span>
-              <span className="font-medium">
+              <span className="font-medium text-gray-600">
                 {journal.sentiment?.magnitude.toFixed(2)}
               </span>
             </div>
