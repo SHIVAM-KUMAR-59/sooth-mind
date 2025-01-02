@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import SignoutButton from '../auth/SignoutButton'
 import NavButton from './NavButton'
 
@@ -10,6 +11,9 @@ const Navbar = ({ session }) => {
         {session ? (
           <>
             <SignoutButton />
+            <Link href="/account" className="text-black">
+              Account
+            </Link>
           </>
         ) : (
           <div className="flex gap-4 w-[60%] md:w-[50%] xl:w-[30%]">

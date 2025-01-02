@@ -12,6 +12,8 @@ const Hero = ({ session }) => {
   useEffect(() => {
     if (session) {
       setRoute('/journal/create-journal')
+      localStorage.setItem('session', JSON.stringify(session))
+      console.log(session)
     }
   }, [session])
 
