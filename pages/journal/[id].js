@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import axios from 'axios'
 import '@/app/globals.css'
 import '@/app/styles.css'
 
@@ -90,7 +89,9 @@ const Journal = () => {
         )}
 
         <div className="w-full xl:w-[30%] bg-black rounded-[8px] text-white inter-medium text-center py-2 my-4 xl:text-[20px] cursor-pointer">
-          <Link href={`/journal/${id}/data`}>View Generated Data</Link>
+          <Link href={{ pathname: `/journal/${id}/data`, query: { id } }}>
+            View Generated Data
+          </Link>
         </div>
       </section>
     </main>
