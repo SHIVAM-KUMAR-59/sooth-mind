@@ -7,6 +7,7 @@ import Menu from '@/components/user/Menu'
 
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import Personal from '@/components/user/Personal'
+import { signOut } from 'next-auth/react'
 
 const account = () => {
   const [user, setUser] = useState({})
@@ -29,7 +30,10 @@ const account = () => {
         <p className="text-[22px] dm-sans-semi-bold w-fit">
           Welcome, {user.name}
         </p>
-        <button className="flex items-center justify-center">
+        <button
+          className="flex items-center justify-center"
+          onClick={() => signOut()}
+        >
           <FontAwesomeIcon icon={faRightFromBracket} className="text-[22px]" />
         </button>
       </div>
