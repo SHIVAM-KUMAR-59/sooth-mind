@@ -4,66 +4,78 @@ import Journal from '@/models/Journal'
 import User from '@/models/User'
 
 export default async function handler(req, res) {
+  // Initialize the database connection
   await configDB()
 
   if (req.method === 'POST') {
     const { title, description, content, userId } = req.body
 
+    // Log incoming request data for debugging
+    console.log({ title, description, content, userId })
+
+    // Validate request body
     if (!title || !description || !content || !userId) {
       return res
         .status(400)
-        .json({ success: false, message: 'Missing required fields' })
+        .json({
+          success: false,
+          message:
+            'Missing required fields: title, description, content, or userId',
+        })
     }
 
     try {
-      // Check if the journal already exists
+      // Check if the journal with the same title already exists
       const existingJournal = await Journal.findOne({ title })
       if (existingJournal) {
         return res
           .status(400)
-          .send({ success: false, message: 'Journal already exists' })
+          .json({
+            success: false,
+            message: 'A journal with this title already exists',
+          })
       }
 
-      // Get sentiment analysis
+      // Perform sentiment analysis on the content
       const sentimentResponse = await getSentimentAnalysis(content)
 
-      // Validate the response structure
+      // Validate the sentiment analysis response structure
       if (
-        !sentimentResponse ||
-        !sentimentResponse.label ||
-        !sentimentResponse.score
+        !sentimentResponse?.label ||
+        typeof sentimentResponse.score !== 'number'
       ) {
         return res
           .status(500)
-          .json({ message: 'Invalid sentiment response format' })
+          .json({
+            success: false,
+            message: 'Failed to retrieve valid sentiment analysis',
+          })
       }
 
-      // Extract sentiment data
-      const dominantSentiment = sentimentResponse
-
-      // Prepare chartData (mocked for single sentiment response)
+      // Determine chart data based on sentiment
       const chartData = {
         positive:
-          dominantSentiment.label === 'POSITIVE' ? dominantSentiment.score : 0,
+          sentimentResponse.label === 'POSITIVE' ? sentimentResponse.score : 0,
         neutral:
-          dominantSentiment.label === 'NEUTRAL' ? dominantSentiment.score : 0,
+          sentimentResponse.label === 'NEUTRAL' ? sentimentResponse.score : 0,
         negative:
-          dominantSentiment.label === 'NEGATIVE' ? dominantSentiment.score : 0,
+          sentimentResponse.label === 'NEGATIVE' ? sentimentResponse.score : 0,
       }
 
-      // Create a new journal
+      // Create a new journal document
       const journal = new Journal({
         title,
         description,
         content,
         sentiment: {
-          score: dominantSentiment.score,
-          label: dominantSentiment.label,
+          score: sentimentResponse.score,
+          label: sentimentResponse.label,
         },
         chartData,
         author: userId,
       })
 
+      // Save the journal to the database
       await journal.save()
 
       // Update the user's journal history
@@ -77,11 +89,22 @@ export default async function handler(req, res) {
       user.journalHistory.push(journal._id)
       await user.save()
 
-      res.status(201).json({ success: true, data: journal })
+      // Respond with the created journal
+      return res.status(201).json({ success: true, data: journal })
     } catch (error) {
-      res.status(400).json({ success: false, error: error.message })
+      console.error(error) // Log the error for debugging
+      return res
+        .status(500)
+        .json({
+          success: false,
+          message: 'An unexpected error occurred',
+          error: error.message,
+        })
     }
   } else {
-    res.status(405).json({ success: false, message: 'Method Not Allowed' })
+    // Handle unsupported HTTP methods
+    return res
+      .status(405)
+      .json({ success: false, message: 'Method Not Allowed' })
   }
 }
