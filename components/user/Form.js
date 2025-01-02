@@ -139,7 +139,7 @@ const Form = ({ user }) => {
 
         <button
           type="submit"
-          className="bg-[#FEFEFE] inter-medium text-[20px] rounded-[8px] py-2 px-3 self-end hover:shadow-md transition-all duration-200 hover:-translate-y-1"
+          className="bg-[#FEFEFE] inter-medium text-[20px] rounded-[8px] shadow-lg xl:shadow-none py-2 px-3 self-end hover:shadow-md transition-all duration-200 hover:-translate-y-1"
         >
           {isLoading ? (
             <span>Saving...</span> // Show loading text
