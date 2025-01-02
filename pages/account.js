@@ -24,8 +24,8 @@ const account = () => {
   }, [])
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#EBF4F5] to-[#B5C6E0] flex flex-col justify-center items-center text-black gap-3">
-      <div className="w-[90%] bg-[#FFEEEE] shadow-xl mx-auto p-4 rounded-[8px] flex justify-between items-center gap-5">
+    <main className="min-h-screen bg-gradient-to-b from-[#EBF4F5] to-[#B5C6E0] flex flex-col  text-black gap-3">
+      <div className="w-[90%] bg-[#FFEEEE] shadow-xl mx-auto p-4 rounded-[8px] flex justify-between items-center gap-5 mt-10 xl:mt-14">
         <p className="text-[22px] dm-sans-semi-bold w-fit xl:text-[64px] xl:text-[#515151]">
           Welcome, {user.name}
         </p>
