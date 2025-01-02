@@ -36,11 +36,12 @@ const UserSchema = mongoose.Schema({
     type: String,
     default: null,
   },
-  journalHistory: {
-    type: [mongoose.Schema.Types.ObjectId],
-    default: [],
-    ref: 'Journal',
-  },
+  journalHistory: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Journal',
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,
