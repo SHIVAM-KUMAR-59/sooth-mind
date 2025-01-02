@@ -7,7 +7,6 @@ import Menu from '@/components/user/Menu'
 
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import Personal from '@/components/user/Personal'
-import axios from 'axios'
 
 const account = () => {
   const [user, setUser] = useState({})
