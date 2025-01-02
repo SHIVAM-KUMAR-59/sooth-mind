@@ -36,7 +36,7 @@ const Journals = ({ user }) => {
   }
 
   return (
-    <div className="w-[95%] flex flex-col justify-center items-center">
+    <div className="w-[95%] min-h-[400px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 xl:gap-4">
       {journals.length > 0 ? (
         journals.map((journal) => <Card key={journal._id} journal={journal} />)
       ) : (
