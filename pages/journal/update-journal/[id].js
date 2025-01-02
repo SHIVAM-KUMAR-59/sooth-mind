@@ -39,7 +39,6 @@ const Journal = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.patch(`/api/update-journal/${id}`, data)
-      console.log(response)
 
       if (response.status === 200) {
         alert('Journal updated successfully')

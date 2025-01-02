@@ -29,7 +29,6 @@ const CreateJournal = () => {
     }
   }, [router.query.session])
 
-  console.log(session)
   const {
     register,
     handleSubmit,

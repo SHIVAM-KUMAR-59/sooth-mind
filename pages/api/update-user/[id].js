@@ -7,8 +7,6 @@ export default async function handler(req, res) {
     await configDB()
     const { name, email, bio, profileImage, password } = req.body
     const { id } = req.query
-    console.log('id', id)
-    console.log('req.body', req.body)
 
     if (!id || !(name || email || bio || profileImage || password)) {
       return res.status(400).json({ message: 'Missing required fields' })
@@ -41,7 +39,6 @@ export default async function handler(req, res) {
         .status(200)
         .json({ message: 'User updated successfully', data: user })
     } catch (error) {
-      console.log(error)
       return res.status(500).json({ message: 'Error updating user', error })
     }
   } else {

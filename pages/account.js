@@ -8,12 +8,11 @@ import Menu from '@/components/user/Menu'
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import Personal from '@/components/user/Personal'
 import { signOut } from 'next-auth/react'
+import Journals from '@/components/user/Journals'
 
 const account = () => {
   const [user, setUser] = useState({})
   const [selected, setSelected] = useState('Account')
-
-  console.log(selected)
 
   useEffect(() => {
     const session = JSON.parse(localStorage.getItem('session'))
@@ -48,6 +47,7 @@ const account = () => {
 
       <div className="w-[90%] mx-auto bg-[#FFEEEE] p-3 rounded-[8px] flex flex-col justify-center items-center gap-3">
         {selected === 'Account' && <Personal user={user} />}
+        {selected === 'My Journals' && <Journals user={user} />}
       </div>
     </main>
   )

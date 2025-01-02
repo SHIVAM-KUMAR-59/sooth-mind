@@ -10,30 +10,23 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { title, description, content, userId } = req.body
 
-    // Log incoming request data for debugging
-    console.log({ title, description, content, userId })
-
     // Validate request body
     if (!title || !description || !content || !userId) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message:
-            'Missing required fields: title, description, content, or userId',
-        })
+      return res.status(400).json({
+        success: false,
+        message:
+          'Missing required fields: title, description, content, or userId',
+      })
     }
 
     try {
       // Check if the journal with the same title already exists
       const existingJournal = await Journal.findOne({ title })
       if (existingJournal) {
-        return res
-          .status(400)
-          .json({
-            success: false,
-            message: 'A journal with this title already exists',
-          })
+        return res.status(400).json({
+          success: false,
+          message: 'A journal with this title already exists',
+        })
       }
 
       // Perform sentiment analysis on the content
@@ -44,12 +37,10 @@ export default async function handler(req, res) {
         !sentimentResponse?.label ||
         typeof sentimentResponse.score !== 'number'
       ) {
-        return res
-          .status(500)
-          .json({
-            success: false,
-            message: 'Failed to retrieve valid sentiment analysis',
-          })
+        return res.status(500).json({
+          success: false,
+          message: 'Failed to retrieve valid sentiment analysis',
+        })
       }
 
       // Determine chart data based on sentiment
@@ -93,13 +84,11 @@ export default async function handler(req, res) {
       return res.status(201).json({ success: true, data: journal })
     } catch (error) {
       console.error(error) // Log the error for debugging
-      return res
-        .status(500)
-        .json({
-          success: false,
-          message: 'An unexpected error occurred',
-          error: error.message,
-        })
+      return res.status(500).json({
+        success: false,
+        message: 'An unexpected error occurred',
+        error: error.message,
+      })
     }
   } else {
     // Handle unsupported HTTP methods

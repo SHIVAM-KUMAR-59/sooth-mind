@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios'
 
 const Form = ({ user }) => {
-  console.log(user.id)
   const {
     register,
     handleSubmit,
@@ -39,7 +38,6 @@ const Form = ({ user }) => {
     }, {})
 
     setIsLoading(true) // Start loading state
-    console.log('changedValues', changedValues)
 
     try {
       const response = await axios.patch(
@@ -52,11 +50,9 @@ const Form = ({ user }) => {
         },
       )
 
-      console.log(response)
       setError(null) // Reset error state on successful API call
       setSuccessMessage('Profile Updated Successfully') // Show success popup
     } catch (error) {
-      console.log(error)
       setError(error.response.data.message) // Set error state if API call fails
     } finally {
       setIsLoading(false) // End loading state

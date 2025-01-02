@@ -10,7 +10,6 @@ const Journal = () => {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(`/api/delete-journal/${id}`)
-      console.log(response)
       router.push('/')
     } catch (error) {
       console.error(error)

@@ -14,17 +14,14 @@ const Journal = () => {
 
   useEffect(() => {
     if (!id) return // Avoid running the effect if `id` is not available
-    console.log(id)
 
     const getJournal = async () => {
       try {
         const response = await fetch(`/api/get-journal/${id}`)
-        console.log(response)
         if (!response.ok) {
           throw new Error('Failed to fetch journal')
         }
         const data = await response.json()
-        console.log(data)
         setJournal(data)
       } catch (err) {
         setError(err.message || 'Something went wrong')

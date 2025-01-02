@@ -13,7 +13,6 @@ const Hero = ({ session }) => {
     if (session) {
       setRoute('/journal/create-journal')
       localStorage.setItem('session', JSON.stringify(session))
-      console.log(session)
     }
   }, [session])
 

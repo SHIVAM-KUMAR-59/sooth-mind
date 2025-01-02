@@ -5,7 +5,6 @@ export default async function testDB(req, res) {
     // Connect to the database
     await configDB()
 
-    console.log('Connected to Database')
     res.status(200).json({ message: 'Database connection successful' })
   } catch (error) {
     console.error('Error connecting to Database:', error)
