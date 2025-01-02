@@ -9,6 +9,7 @@ import {
 } from 'recharts'
 import { jsPDF } from 'jspdf'
 import Papa from 'papaparse'
+import Link from 'next/link'
 
 const JournalData = () => {
   const [journal, setJournal] = useState(null)
@@ -155,6 +156,9 @@ const JournalData = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-t from-[#B8C9E1] to-[#EAF3F5] py-8 px-4">
+      <Link href="/" className="text-black xl:text-[20px]">
+        Home
+      </Link>
       <div className="max-w-4xl mx-auto space-y-6 mt-5">
         <div className="bg-white rounded-lg shadow-lg p-6">
           <div className="space-y-4">
