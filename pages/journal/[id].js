@@ -33,8 +33,10 @@ const Journal = () => {
       }
     }
 
+    sessionStorage.setItem('journalId', id)
+
     getJournal()
-  }, [id]) // Runs when `id` changes
+  }, [id])
 
   const timestamp = journal?.createdAt
   const dateObj = new Date(timestamp)
@@ -72,7 +74,7 @@ const Journal = () => {
           <h3>{journal.description}</h3>
         </div>
         <hr className="w-full border-1 border-black my-3" />
-        <div>
+        <div className="w-full text-left">
           {/* Render the content with line breaks */}
           {journal.content.split('\n').map((line, index) => (
             <p key={index} className="dm-sans-light text-[15px] xl:text-[22px]">
@@ -89,9 +91,7 @@ const Journal = () => {
         )}
 
         <div className="w-full xl:w-[30%] bg-black rounded-[8px] text-white inter-medium text-center py-2 my-4 xl:text-[20px] cursor-pointer">
-          <Link href={{ pathname: `/journal/${id}/data`, query: { id } }}>
-            View Generated Data
-          </Link>
+          <Link href={`/journal/${id}/data`}>View Generated Data</Link>
         </div>
       </section>
     </main>
