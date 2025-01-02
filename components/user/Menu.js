@@ -2,7 +2,7 @@ import React from 'react'
 
 const Menu = ({ selected, setSelected }) => {
   return (
-    <ul className="w-full flex items-center justify-around text-[18px] dm-sans-bold">
+    <ul className="w-full flex items-center justify-evenly text-[18px] xl:text-[22px] dm-sans-bold">
       {['Account', 'My Journals', 'Settings'].map((item) => (
         <li
           key={item}

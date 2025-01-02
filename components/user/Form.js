@@ -72,7 +72,7 @@ const Form = ({ user }) => {
   }
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full xl:w-[50%]">
       {error && (
         <div className="absolute top-10 left-1/2 transform -translate-x-1/2 bg-red-500 text-white p-4 rounded-[8px] shadow-lg flex flex-col justify-between items-center w-[90%] gap-2">
           <span>{error}</span>
@@ -139,7 +139,7 @@ const Form = ({ user }) => {
 
         <button
           type="submit"
-          className="bg-[#FEFEFE] inter-medium text-[20px] rounded-[8px] shadow-lg py-2 px-3 self-end"
+          className="bg-[#FEFEFE] inter-medium text-[20px] rounded-[8px] py-2 px-3 self-end hover:shadow-md transition-all duration-200 hover:-translate-y-1"
         >
           {isLoading ? (
             <span>Saving...</span> // Show loading text
