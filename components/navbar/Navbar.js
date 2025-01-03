@@ -8,7 +8,7 @@ const Navbar = ({ session }) => {
     <nav className="flex w-full p-2">
       <div className="w-[95%] mx-auto flex gap-4 items-center justify-between">
         <Link href="/" className="text-black">
-          <Image src="/Logo.png" width={100} height={100} alt="logo" />
+          <Image src="/LOGO.png" width={100} height={100} alt="logo" />
         </Link>
         {session ? (
           <>

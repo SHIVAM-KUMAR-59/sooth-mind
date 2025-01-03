@@ -68,7 +68,7 @@ const CreateJournal = () => {
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#E6E3C4] to-[#BBD5DA] relative flex justify-center items-center">
       <Link href="/" className="text-black">
-        <Image src="/Logo.png" width={100} height={100} alt="logo" />
+        <Image src="/LOGO.png" width={100} height={100} alt="logo" />
       </Link>
       <div className="w-full flex flex-col justify-center items-center">
         <div className="text-center">

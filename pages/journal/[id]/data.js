@@ -177,7 +177,7 @@ const JournalData = () => {
   return (
     <div className="min-h-screen bg-gradient-to-t from-[#B8C9E1] to-[#EAF3F5] py-8 px-4">
       <Link href="/" className="text-black">
-        <Image src="/Logo.png" width={100} height={100} alt="logo" />
+        <Image src="/LOGO.png" width={100} height={100} alt="logo" />
       </Link>
       <div className="max-w-4xl mx-auto space-y-6 mt-5">
         <div className="bg-white rounded-lg shadow-lg p-6">

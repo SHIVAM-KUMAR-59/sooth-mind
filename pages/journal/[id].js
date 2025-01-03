@@ -63,7 +63,7 @@ const Journal = () => {
   return (
     <main className="min-h-screen bg-gradient-to-t from-[#B8C9E1] to-[#EAF3F5] text-black">
       <Link href="/" className="text-black">
-        <Image src="/Logo.png" width={100} height={100} alt="logo" />
+        <Image src="/LOGO.png" width={100} height={100} alt="logo" />
       </Link>
       <section className="w-[95%] xl:w-[70%] mx-auto h-full flex flex-col items-center justify-center gap-2">
         <div className="w-full">
