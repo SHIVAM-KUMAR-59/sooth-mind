@@ -61,6 +61,12 @@ const Journal = () => {
 
   return (
     <main className="min-h-screen bg-gradient-to-t from-[#B8C9E1] to-[#EAF3F5] text-black">
+      <Link
+        href="/"
+        className="absolute top-0 left-0 mt-4 ml-4 text-white inter-regular bg-black bg-opacity-35 px-4 py-2 rounded-md text-[20px] hover:scale-105 hover:bg-opacity-70 transition-all duration-200"
+      >
+        Home
+      </Link>
       <section className="w-[95%] xl:w-[70%] mx-auto h-full flex flex-col items-center justify-center gap-2">
         <div className="w-full">
           <h1 className="mt-12 text-[32px] xl:text-[64px] fraunces-semiBold">

@@ -7,6 +7,7 @@ import MessageBox from '@/components/journal/MessageBox'
 import Button from '@/components/journal/Button'
 import '@/app/globals.css'
 import '@/app/styles.css'
+import Link from 'next/link'
 
 const CreateJournal = () => {
   const router = useRouter()
@@ -65,6 +66,12 @@ const CreateJournal = () => {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#E6E3C4] to-[#BBD5DA] relative flex justify-center items-center">
+      <Link
+        href="/"
+        className="absolute top-0 left-0 mt-4 ml-4 text-white inter-regular bg-black bg-opacity-35 px-4 py-2 rounded-md text-[20px] hover:scale-105 hover:bg-opacity-70 transition-all duration-200"
+      >
+        Home
+      </Link>
       <div className="w-full flex flex-col justify-center items-center">
         <div className="text-center">
           <h1 className="text-[30px] fraunces-semiBold text-black mt-6 md:text-[60px]">

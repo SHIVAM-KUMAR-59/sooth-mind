@@ -10,6 +10,9 @@ import {
 import { jsPDF } from 'jspdf'
 import Papa from 'papaparse'
 import Link from 'next/link'
+import html2canvas from 'html2canvas'
+import '@/app/globals.css'
+import '@/app/styles.css'
 
 const JournalData = () => {
   const [journal, setJournal] = useState(null)
@@ -80,7 +83,7 @@ const JournalData = () => {
   ]
 
   // Function to generate PDF
-  const generatePDF = () => {
+  const generatePDF = async () => {
     const doc = new jsPDF()
 
     // Title and Journal Info
@@ -100,9 +103,11 @@ const JournalData = () => {
       60,
     )
 
-    // Sentiment Analysis
+    // Sentiment Analysis Section
     doc.addPage()
+    doc.setFontSize(14)
     doc.text('Sentiment Analysis', 14, 20)
+    doc.setFontSize(12)
     doc.text(
       `Negative Sentiment: ${(journal.chartData?.negative || 0).toFixed(2)}`,
       14,
@@ -119,9 +124,23 @@ const JournalData = () => {
       50,
     )
 
-    // Overall Sentiment
+    // Capture and Add Chart Image
+    const chartElement = document.querySelector('.recharts-wrapper')
+    if (chartElement) {
+      const canvas = await html2canvas(chartElement)
+      const imgData = canvas.toDataURL('image/png')
+      doc.addPage()
+      doc.text('Sentiment Chart', 14, 20)
+      doc.addImage(imgData, 'PNG', 14, 30, 180, 90) // Adjust size as needed
+    } else {
+      console.error('Chart element not found')
+    }
+
+    // Overall Sentiment Section
     doc.addPage()
+    doc.setFontSize(14)
     doc.text('Overall Sentiment', 14, 20)
+    doc.setFontSize(12)
     doc.text(`Label: ${journal.sentiment?.label}`, 14, 30)
     doc.text(`Score: ${journal.sentiment?.score.toFixed(2)}`, 14, 40)
     doc.text(`Magnitude: ${journal.sentiment?.magnitude.toFixed(2)}`, 14, 50)
@@ -156,7 +175,10 @@ const JournalData = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-t from-[#B8C9E1] to-[#EAF3F5] py-8 px-4">
-      <Link href="/" className="text-black xl:text-[20px]">
+      <Link
+        href="/"
+        className="absolute top-0 left-0 mt-4 ml-4 text-white inter-regular bg-black bg-opacity-35 px-4 py-2 rounded-md text-[20px] hover:scale-105 hover:bg-opacity-70 transition-all duration-200"
+      >
         Home
       </Link>
       <div className="max-w-4xl mx-auto space-y-6 mt-5">
