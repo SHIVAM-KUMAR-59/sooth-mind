@@ -13,6 +13,7 @@ import Link from 'next/link'
 import html2canvas from 'html2canvas'
 import '@/app/globals.css'
 import '@/app/styles.css'
+import Image from 'next/image'
 
 const JournalData = () => {
   const [journal, setJournal] = useState(null)
@@ -175,11 +176,8 @@ const JournalData = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-t from-[#B8C9E1] to-[#EAF3F5] py-8 px-4">
-      <Link
-        href="/"
-        className="absolute top-0 left-0 mt-4 ml-4 text-white inter-regular bg-black bg-opacity-35 px-4 py-2 rounded-md text-[20px] hover:scale-105 hover:bg-opacity-70 transition-all duration-200"
-      >
-        Home
+      <Link href="/" className="text-black">
+        <Image src="/Logo.png" width={100} height={100} alt="logo" />
       </Link>
       <div className="max-w-4xl mx-auto space-y-6 mt-5">
         <div className="bg-white rounded-lg shadow-lg p-6">

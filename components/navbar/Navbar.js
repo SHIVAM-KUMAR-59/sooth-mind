@@ -1,14 +1,14 @@
 'use client'
 import Link from 'next/link'
-import SignoutButton from '../auth/SignoutButton'
 import NavButton from './NavButton'
+import Image from 'next/image'
 
 const Navbar = ({ session }) => {
   return (
     <nav className="flex w-full p-2">
       <div className="w-[95%] mx-auto flex gap-4 items-center justify-between">
         <Link href="/" className="text-black">
-          Logo
+          <Image src="/Logo.png" width={100} height={100} alt="logo" />
         </Link>
         {session ? (
           <>
