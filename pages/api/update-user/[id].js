@@ -5,10 +5,10 @@ import bcrypt from 'bcryptjs'
 export default async function handler(req, res) {
   if (req.method === 'PATCH') {
     await configDB()
-    const { name, email, bio, profileImage, password } = req.body
+    const { name, email, bio, profileImage, newPassword } = req.body
     const { id } = req.query
 
-    if (!id || !(name || email || bio || profileImage || password)) {
+    if (!id || !(name || email || bio || profileImage || newPassword)) {
       return res.status(400).json({ message: 'Missing required fields' })
     }
 
@@ -26,9 +26,14 @@ export default async function handler(req, res) {
       user.profileImage = profileImage || user.profileImage
 
       // If password is provided, hash it
-      if (password) {
+      if (newPassword) {
+        if (!user.isOAuth) {
+          if (!bcrypt.compareSync(newPassword, user.password)) {
+            return res.status(400).json({ message: 'Invalid password' })
+          }
+        }
         const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(password, salt)
+        const hashedPassword = await bcrypt.hash(newPassword, salt)
         user.password = hashedPassword
       }
 
@@ -42,6 +47,7 @@ export default async function handler(req, res) {
       return res.status(500).json({ message: 'Error updating user', error })
     }
   } else {
+    console.log(error)
     return res.status(405).json({ message: 'Method not allowed' })
   }
 }
