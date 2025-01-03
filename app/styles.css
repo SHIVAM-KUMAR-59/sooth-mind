@@ -381,3 +381,10 @@
   font-weight: 900;
   font-style: italic;
 }
+
+.input::placeholder {
+  color: rgb(0, 0, 0, 0.5);
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  font-style: normal;
+}

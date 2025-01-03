@@ -10,6 +10,7 @@ import Personal from '@/components/user/Personal'
 import { signOut } from 'next-auth/react'
 import Journals from '@/components/user/Journals'
 import Link from 'next/link'
+import Settings from '@/components/user/Settings'
 
 const account = () => {
   const [user, setUser] = useState({})
@@ -29,7 +30,7 @@ const account = () => {
       <Link href="/" className="text-black m-2 p-3">
         Logo
       </Link>
-      <div className="w-[90%] bg-[#FFEEEE] shadow-xl mx-auto p-4 rounded-[8px] flex justify-between items-center gap-5 mt-10 xl:mt-4">
+      <div className="w-[90%] bg-[#FFEEEE] shadow-xl mx-auto p-4 rounded-[8px] flex justify-between items-center gap-5 mt-1 xl:mt-4">
         <p className="text-[22px] dm-sans-semi-bold w-fit xl:text-[64px] xl:text-[#515151]">
           Welcome, {user.name}
         </p>
@@ -44,13 +45,14 @@ const account = () => {
         </button>
       </div>
       <div className="w-[90%] mx-auto">
-        <div className="w-full xl:w-[40%] xl:mx-0 xl:self-start xl:mt-7 bg-[#FFEEEE] shadow-xl mx-auto py-3 px-2 rounded-[8px] flex justify-between items-center">
+        <div className="w-full xl:w-[40%] xl:mx-0 xl:self-start xl:mt-7 bg-[#FFEEEE] shadow-xl mx-auto py-1 xl:py-3 px-2 rounded-[8px] flex justify-between items-center">
           <Menu selected={selected} setSelected={setSelected} />
         </div>
       </div>
       <div className="w-[90%] mx-auto bg-[#FFEEEE] p-3 rounded-[8px] flex flex-col justify-center items-center gap-3">
         {selected === 'Account' && <Personal user={user} />}
         {selected === 'My Journals' && <Journals user={user} />}
+        {selected === 'Settings' && <Settings user={user} />}
       </div>
     </main>
   )
