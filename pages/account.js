@@ -28,7 +28,7 @@ const account = () => {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#EBF4F5] to-[#B5C6E0] flex flex-col text-black gap-3 pb-3 relative">
-      <Link href="/" className="text-black absolute top-4 left-4">
+      <Link href="/" className="text-black pt-3 pl-4">
         <Image src="/LOGO.png" width={100} height={100} alt="logo" />
       </Link>
       <div className="w-[90%] bg-[#FFEEEE] shadow-xl mx-auto p-4 rounded-[8px] flex justify-between items-center gap-5 mt-1 xl:mt-4">
