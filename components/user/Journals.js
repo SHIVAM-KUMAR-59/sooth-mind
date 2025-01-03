@@ -46,7 +46,7 @@ const Journals = ({ user }) => {
           </p>
           <Link
             href="/journal/create-journal"
-            className="text-[20px] p-3 mt-3 rounded-[8px] bg-[#4d4c4c] text-white inter-regular"
+            className="text-[20px] h-fit text-center p-3 mt-3 rounded-[8px] bg-[#4d4c4c] text-white inter-regular"
           >
             Create a new journal
           </Link>
