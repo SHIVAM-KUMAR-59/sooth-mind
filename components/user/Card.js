@@ -21,7 +21,7 @@ const Card = ({ journal }) => {
 
         <p
           href={`/journal/${journal._id}`}
-          className="mt-auto inter-soft text-[13px] xl:text-[18px] self-baseline px-3 py-1 rounded-md bg-[#3a3939] text-white"
+          className="my-2 inter-soft text-[13px] xl:text-[18px] self-baseline px-3 py-1 rounded-md bg-[#3a3939] text-white"
         >
           Read more
         </p>
