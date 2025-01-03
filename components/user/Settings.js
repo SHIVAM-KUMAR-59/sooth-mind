@@ -79,7 +79,7 @@ const Settings = ({ user }) => {
       <div>
         <hr className="border-[1.2px] border-[rgb(0,0,0,0.2)]" />
       </div>
-      <DeleteAccount />
+      <DeleteAccount user={user} />
     </section>
   )
 }
