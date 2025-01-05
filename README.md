@@ -1,3 +1,5 @@
+<img src="./public/LandingPage.png">
+
 # 🌟 Mental Well-being Platform
 
 ## 📝 Project Overview
@@ -42,7 +44,7 @@ The Content Section of the Mental Well-being Platform is designed to enhance use
 - **Database**: MongoDB (with Mongoose) for storing user journals and mood data.
 - **AI Integration**: Hugging Face API for natural language processing and mood analysis.
 - **Authentication**: NextAuth.js for secure and flexible user authentication.
-- **Visualization**: Chart.js for displaying mood history trends.
+- **Visualization**: Recharts for displaying mood history trends.
 
 ---
 
@@ -71,45 +73,45 @@ The Content Section of the Mental Well-being Platform is designed to enhance use
 
 ## 📝 **3. Journal Entry System**
 
-- ⬜ Design and implement a user-friendly journal entry text editor.
-- ⬜ Create API routes to save and retrieve journal entries from MongoDB.
-- ⬜ Display journal entries on a user dashboard with timestamps.
+- ✅ Design and implement a user-friendly journal entry text editor.
+- ✅ Create API routes to save and retrieve journal entries from MongoDB.
+- ✅ Display journal entries on a user dashboard with timestamps.
 
 ---
 
 ## 🧠 **4. Sentiment Analysis**
 
-- ⬜ Integrate the Hugging Face for sentiment analysis of journal entries.
-- ⬜ Send journal text to the API and retrieve mood sentiment (e.g., 😊 Positive, 😐 Neutral, 😔 Negative).
-- ⬜ Store sentiment results alongside journal entries in MongoDB.
+- ✅ Integrate the Hugging Face for sentiment analysis of journal entries.
+- ✅ Send journal text to the API and retrieve mood sentiment (e.g., 😊 Positive, 😐 Neutral, 😔 Negative).
+- ✅ Store sentiment results alongside journal entries in MongoDB.
 
 ---
 
 ## 📊 **5. Mood Insights Dashboard**
 
-- ⬜ Fetch journal sentiment data from MongoDB.
-- ⬜ Use Chart.js to create a graph visualizing mood trends.
-- ⬜ Add filters like "Past Week," "Month," or "Year" for better analysis.
+- ✅ Fetch journal sentiment data from MongoDB.
+- ✅ Use `recharts` to create a graph visualizing mood trends.
+- ✅ Add filters like "Past Week," "Month," or "Year" for better analysis.
 
 ---
 
 ## 🎯 **6. Activity Suggestions**
 
-- ⬜ Predefine activity suggestions based on sentiment categories.
-- ⬜ Dynamically display suggestions based on recent user mood trends.
+- ✅ Predefine activity suggestions based on sentiment categories.
+- ✅ Dynamically display suggestions based on recent user mood trends.
 
 ---
 
 ## 📂 **7. Export Journal Data**
 
-- ⬜ Provide options to export journal entries and mood data as PDF or CSV.
-- ⬜ Use jsPDF and PapaParse libraries for generating downloadable files.
+- ✅ Provide options to export journal entries and mood data as PDF or CSV.
+- ✅ Use jsPDF and PapaParse libraries for generating downloadable files.
 
 ---
 
 ## 🧑‍💻 **8. User Profile and Settings**
 
-- ⬜ Create a profile page where users can update their details.
+- ✅ Create a profile page where users can update their details.
 
 ---
 
