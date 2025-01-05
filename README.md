@@ -136,7 +136,7 @@ Stay tuned for updates as the project progresses! ✨
 
 ```bash
 git clone https://github.com/your-username/mental-wellbeing-platform.git
-cd mental-wellbeing-platform
+cd sooth-mind
 ```
 
 2. Install Dependencies:
