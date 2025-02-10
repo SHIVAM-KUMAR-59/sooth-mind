@@ -68,7 +68,7 @@ const Signin = () => {
             message="Email is required"
             validationRules={{ required: 'Email is required' }}
           />
-          <InputField
+          {/* <InputField
             name="password"
             label="Password"
             type="password"
@@ -92,7 +92,7 @@ const Signin = () => {
                   'Password must include uppercase, lowercase, number, and special character',
               },
             }}
-          />
+          /> */}
 
           <HelpText
             text="Forgot Password?"
